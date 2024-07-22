@@ -18,13 +18,13 @@ const NavBar = () => {
     },
   ]);
   return (
-    <nav className="flex px-24 py-4 navbg shadow-md shadow-slate-800 items-center">
+    <nav className="flex px-24 py-4 navbg flex-wrap shadow-md shadow-slate-800 items-center">
       <div className="logo basis-1/2">
         <h2>Food</h2>
         <h3>Empire</h3>
       </div>
 
-      <div className="links flex items-center w-full justify-between">
+      <div className="links flex items-center  flex-wrap w-full justify-between">
         <ul className="flex gap-4">
             {
                 navLinks.map(l=>(

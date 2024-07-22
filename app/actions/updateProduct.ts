@@ -3,21 +3,23 @@ import axios from 'axios'; // Import axios
 import { revalidatePath } from 'next/cache';
 
 interface ProductItem {
-  name: string;
-  price: string;
-  image: string;
-  details:string
+    _id:string;
+    name: string;
+    price: string | number;
+    in_cart:boolean;
+    image: string;
+    details: string;
 }
 
 let url = process.env.NEXT_PUBLIC_DB
 
-export async function addProducts(api:String,data:ProductItem) {
+export async function updateProduct(api:String,data:ProductItem) {
   try {
-    const response = await axios.post(`${url}/${api}`,{...data}); // Replace with your actual endpoint
+    const response = await axios.patch(`${url}/${api}`,{...data}); // Replace with your actual endpoint
 
     revalidatePath('/admin-dash')
     // Handle successful response
-    return {data: response.data,status: 201,msg: 'Created'}; // Return the fetched data
+    return {data: response.data,status: 201,msg: 'Updated'}; // Return the fetched data
 
   } catch (err:any) {
     console.error('Error fetching data:', err.response?.status);

@@ -20,7 +20,7 @@ export default function Home() {
         <div className="my-6 bg-[#171719] text-[#171719] h-[2px] " />
 
         {/* Fruit cards */}
-        <FavoriteFruits />
+        <FavoriteFruits admin={false} />
       </section>
     </main>
   );
