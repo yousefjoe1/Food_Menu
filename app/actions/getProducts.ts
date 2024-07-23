@@ -6,7 +6,7 @@ let url = process.env.NEXT_PUBLIC_DB
 
 export async function getData(api:String) {
   try {
-    const response = await axios.get(`${url}/${api}`); // Replace with your actual endpoint
+    const response = await axios.get(`${url}${api}`); // Replace with your actual endpoint
 
     // Handle successful response
     return response.data; // Return the fetched data
