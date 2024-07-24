@@ -1,12 +1,18 @@
+import { ChakraWrapper } from '@/app/_components/Cards/HOC/ChakraWrapper'
+import Login from '@/app/_components/Forms/Login'
+import Register from '@/app/_components/Forms/Register'
 import React from 'react'
 
-const Register = () => {
+const page = () => {
   return (
-    <div className='px-4'>
-      <h1>Register</h1>
-      
+    <div>
+      <ChakraWrapper>
+        <Register />
+        <h4 className='bg-slate-400 p-3 rounded-xl mx-3 text-center'>Login</h4>
+        <Login />
+      </ChakraWrapper>
     </div>
   )
 }
 
-export default Register
+export default page

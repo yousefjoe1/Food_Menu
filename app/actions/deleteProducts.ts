@@ -6,7 +6,7 @@ let url = process.env.NEXT_PUBLIC_DB
 
 export async function deleteProduct(api:String) {
   try {
-    const response = await axios.delete(`${url}/${api}`); // Replace with your actual endpoint
+    const response = await axios.delete(`${url}${api}`); // Replace with your actual endpoint
 
     revalidatePath('/')
     // Handle successful response

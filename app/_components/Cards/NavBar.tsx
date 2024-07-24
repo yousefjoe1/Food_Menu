@@ -1,6 +1,8 @@
 'use client'
 import Link from "next/link";
 import React, { useState } from "react";
+import Cart from "../Cart/Cart";
+import Auth from "../Auth/Auth";
 
 const NavBar = () => {
   const [navLinks, setNavLinks] = useState([
@@ -18,13 +20,13 @@ const NavBar = () => {
     },
   ]);
   return (
-    <nav className="flex px-24 py-4 navbg flex-wrap shadow-md shadow-slate-800 items-center">
+    <nav className="flex px-24 py-4 navbg shadow-md shadow-slate-800 items-center justify-between">
       <div className="logo basis-1/2">
         <h2>Food</h2>
         <h3>Empire</h3>
       </div>
 
-      <div className="links flex items-center  flex-wrap w-full justify-between">
+      <div className="links flex items-center flex-wrap w-full justify-center">
         <ul className="flex gap-4">
             {
                 navLinks.map(l=>(
@@ -36,13 +38,12 @@ const NavBar = () => {
                 ))
             }
         </ul>
-        <div className="cart-auth flex gap-10 items-center">
-            {/* cart */}
-            <h3>cart</h3>
-
-            <h3>Auth</h3>
-        </div>
       </div>
+        <div className="cart-auth flex gap-10 items-center">
+            <Cart />
+
+            <Auth />
+        </div>
     </nav>
   );
 };

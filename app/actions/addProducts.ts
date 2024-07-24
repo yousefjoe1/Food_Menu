@@ -13,7 +13,7 @@ let url = process.env.NEXT_PUBLIC_DB
 
 export async function addProducts(api:String,data:ProductItem) {
   try {
-    const response = await axios.post(`${url}/${api}`,{...data}); // Replace with your actual endpoint
+    const response = await axios.post(`${url}${api}`,{...data}); // Replace with your actual endpoint
 
     revalidatePath('/admin-dash')
     // Handle successful response
