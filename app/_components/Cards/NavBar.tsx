@@ -20,7 +20,7 @@ const NavBar = () => {
     },
   ]);
   return (
-    <nav className="flex px-24 py-4 navbg shadow-md shadow-slate-800 items-center justify-between">
+    <nav className="flex gap-y-3 items-center justify-between flex-wrap lg:px-24 px-4 py-5 navbg shadow-md shadow-slate-800">
       <div className="logo basis-1/2">
         <h2>Food</h2>
         <h3>Empire</h3>
@@ -31,7 +31,7 @@ const NavBar = () => {
             {
                 navLinks.map(l=>(
                     <li key={l.name}>
-                        <Link href={`/${l.link}`}>
+                        <Link href={`/${l.link}`} className="lg:text-2xl text-sm ">
                             {l.name}
                         </Link>
                     </li>

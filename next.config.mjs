@@ -8,11 +8,26 @@ const nextConfig = {
             port: '',
             pathname: '/**',
           },
+          {
+            protocol: 'http',
+            hostname: '',
+            port: '',
+            pathname: '/**',
+          },
+          {
+            protocol: 'https',
+            hostname: 'bit.ly',
+            port: '',
+            pathname: '/**',
+          },
+          {
+            protocol: 'https',
+            hostname: 'www.sender.net',
+            port: '',
+            pathname: '/**',
+          },
         ],
       },
-        experimental: {
-            instrumentationHook: true,
-        },
 };
 
 export default nextConfig;

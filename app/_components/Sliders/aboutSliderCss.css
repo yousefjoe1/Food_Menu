@@ -1,0 +1,23 @@
+.swiper {
+    width: 100%;
+    height: 100%;
+  }
+  
+  .swiper-slide {
+    background: #36363666;
+    min-height: 230px;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .swiper-slide img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+/* .about-swiper .swiper-pagination {
+  background: #2179c6;
+  bottom: -10px;
+} */

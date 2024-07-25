@@ -109,7 +109,7 @@ const Register: FC = () => {
         </div>
       </form>
       <div className="img-wrapper">
-        <Image width={300} height={300} className="w-full rounded-r-3xl" alt="image" src={`https://res.cloudinary.com/upwork-cloud/image/upload/c_scale,w_1000/v1687802747/catalog/1673391100242911232/ixmsjupruwgd64xmnmks.jpg`} />
+        <Image width={500} height={500} className="w-full rounded-r-3xl" alt="image" src={`https://res.cloudinary.com/upwork-cloud/image/upload/c_scale,w_1000/v1687802747/catalog/1673391100242911232/ixmsjupruwgd64xmnmks.jpg`} />
       </div>
     </div>
   );
