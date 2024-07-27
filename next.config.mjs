@@ -10,7 +10,7 @@ remotePatterns: [
    },
    {
    protocol: 'http',
-   hostname: '',
+   hostname: 'localhost',
    port: '',
    pathname: '/**',
    },
