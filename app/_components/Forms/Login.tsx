@@ -1,6 +1,6 @@
 "use client";
 
-import React, { FC, useRef, useState } from "react";
+import React, { FC, useState } from "react";
 import { useRouter } from "next/navigation";
 import Image from "next/image";
 
@@ -37,13 +37,15 @@ const Login: FC = () => {
     };
 
     let res = await loginUser("users/login", dataValues);
+    console.log(res,'login res');
+    
 
-    if (res.status == 201) {
+    if (res.code == 200) {
       setIsSubmit(false);
       msg({ title: res.msg, status: "success", duration: 3000 });
+      redirect.push("/admin-dash");
     } else {
       msg({ title: res.msg, status: "error", duration: 3000 });
-      // redirect.push("/profile");
       setIsSubmit(false);
     }
   };
@@ -85,13 +87,13 @@ const Login: FC = () => {
 
         <div className="submit-btn">
           {isSubmit ? (
-            <Spinner size={"2xl"} height={50} width={1} />
+            <Spinner size={"2xl"} color="white" height={50} width={1} />
           ) : (
             <button
               className=" bg-slate-500 text-white outline-none border-none w-full py-2 rounded-3xl"
               type="submit"
             >
-              Register
+              Login
             </button>
           )}
 

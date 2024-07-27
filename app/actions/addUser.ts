@@ -1,5 +1,6 @@
 'use server'
 import axios from 'axios';
+import { cookies } from 'next/headers';
 
 interface UserItem {
   username: string;
@@ -10,14 +11,15 @@ interface UserItem {
 let url = process.env.NEXT_PUBLIC_DB
 
 export async function addUser(api:String,data:UserItem) {
+  
   try {
     const response = await axios.post(`${url}${api}`,{...data}); // Replace with your actual endpoint
     // Handle successful response
-    console.log(response,'add user');
-    
-    return {data: response.data,status: 201,msg: 'Created'}; // Return the fetched data
+    console.log(response.data,'add user');
+    cookies().set('user-tk-fruit',response.data.token)
+    return {data: response.data,code: 201,msg: response.data.msg,status:response.data.status}; // Return the fetched data
   } catch (err:any) {
-    console.error('Error add user data:', err.response?.status);
-    return {status: err.response?.status,data: null,msg:`Error add user data - ${err.response?.status}`}
+    console.error('Error add user data:', err.response.data);
+    return {code: err.response.data?.status,data: null,msg:`Error in register - ${err.response?.data.msg}`,status: err.response.data.status}
   }
 }
