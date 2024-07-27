@@ -17,9 +17,9 @@ const Hero = () => {
             <FaTwitter className="text-slate-400" />
         </Link>
       </div>
-      {/* <Image src={`/Pineapple.png`} alt="background-image" width={1000} height={500} className="w-full h-full" /> */}
+      <Image src={`/Pineapple.png`} alt="background-image" width={1000} height={500} className="w-full h-full" />
 
-      <div className="section-footer bg-slate-400/55 h-[400px] rounded-3xl px-7 flex lg:flex-row flex-col justify-between items-center flex-wrap  ">
+      <div className="section-footer bg-slate-400/55 h-[400px] rounded-3xl px-7 flex lg:flex-row flex-col justify-between items-center flex-wrap absolute bottom-0 left-0 ">
         <h2 className="basis-1/2 lg:text-3xl text-sm font-bold">
           Fresh Fruit & <br /> Amazing Taist
         </h2>
