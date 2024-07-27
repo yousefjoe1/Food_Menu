@@ -15,7 +15,7 @@ interface FormValues {
   password: string;
 }
 
-const page: FC = () => {
+const Admin: FC = () => {
   const form = useForm<FormValues>();
 
   const { register, handleSubmit, formState } = form;
@@ -104,4 +104,4 @@ const page: FC = () => {
   );
 };
 
-export default page;
+export default Admin;
