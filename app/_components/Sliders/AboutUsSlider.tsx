@@ -16,7 +16,7 @@ import Image from "next/image";
 
 export default function AboutUsSlider() {
   return (
-    <section className="bg-[#090A10] pb-4">
+    <section className="bg-[#090A10] text-white pb-4">
       <div className="about-header ">
         <h2 className="pt-6 px-24 text-3xl">About Us</h2>
       </div>
@@ -47,7 +47,7 @@ export default function AboutUsSlider() {
         >
           <SwiperSlide className="">
             <div className="p-4 grid grid-cols-2">
-              <div className="avatar-name-details flex flex-1 flex-col gap-3 justify-between h-full">
+              <div className="avatar-name-details text-white flex flex-1 flex-col gap-3 justify-between h-full">
                 <div className="image-starts flex flex-wrap items-center gap-3">
                   <div className="w-[60px] h-[60px] ">
                     <div className="img-div w-[60px] h-[60px]">
@@ -86,7 +86,7 @@ export default function AboutUsSlider() {
           </SwiperSlide>
           <SwiperSlide className="">
             <div className="p-4 grid grid-cols-2">
-              <div className="avatar-name-details flex flex-1 flex-col gap-3 justify-between h-full">
+              <div className="avatar-name-details text-white flex flex-1 flex-col gap-3 justify-between h-full">
                 <div className="image-starts flex flex-wrap items-center gap-3">
                   <div className="w-[60px] h-[60px] ">
                     <div className="img-div w-[60px] h-[60px]">
@@ -125,7 +125,7 @@ export default function AboutUsSlider() {
           </SwiperSlide>
           <SwiperSlide className="">
             <div className="p-4 grid grid-cols-2">
-              <div className="avatar-name-details flex flex-1 flex-col gap-3 justify-between h-full">
+              <div className="avatar-name-details text-white flex flex-1 flex-col gap-3 justify-between h-full">
                 <div className="image-starts flex flex-wrap items-center gap-3">
                   <div className="w-[60px] h-[60px] ">
                     <div className="img-div w-[60px] h-[60px]">
@@ -164,7 +164,7 @@ export default function AboutUsSlider() {
           </SwiperSlide>
           <SwiperSlide className="">
             <div className="p-4 grid grid-cols-2">
-              <div className="avatar-name-details flex flex-1 flex-col gap-3 justify-between h-full">
+              <div className="avatar-name-details text-white flex flex-1 flex-col gap-3 justify-between h-full">
                 <div className="image-starts flex flex-wrap items-center gap-3">
                   <div className="w-[60px] h-[60px] ">
                     <div className="img-div w-[60px] h-[60px]">

@@ -9,6 +9,7 @@ import { Spinner, useToast } from "@chakra-ui/react";
 import { useForm } from "react-hook-form";
 
 import { adminLogin } from "../actions/adminLogin";
+import { ChakraWrapper } from "../_components/Cards/HOC/ChakraWrapper";
 
 interface FormValues {
   email: string;
@@ -40,6 +41,8 @@ const Admin: FC = () => {
 
     if (res.code == 200) {
       setIsSubmit(false);
+      console.log('admin true');
+      
       msg({ title: res.msg, status: "success", duration: 3000 });
       redirect.push("/admin-dash");
     } else {
@@ -85,7 +88,13 @@ const Admin: FC = () => {
 
         <div className="submit-btn">
           {isSubmit ? (
-            <Spinner size={"lg"} height={50} width={1} />
+            <Spinner
+  thickness='4px'
+  speed='0.65s'
+  emptyColor='gray.200'
+  color='blue.500'
+  size='xl'
+/>
           ) : (
             <button
               className=" bg-slate-500 text-white outline-none border-none w-full py-2 rounded-3xl"

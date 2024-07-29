@@ -8,6 +8,12 @@ remotePatterns: [
    port: '',
    pathname: '/**',
    },
+{
+   protocol: 'https',
+   hostname: '***.net',
+   port: '',
+   pathname: '/**',
+   },
    {
    protocol: 'http',
    hostname: 'localhost',

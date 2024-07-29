@@ -11,6 +11,17 @@ import UpdateProduct from "../UpdateDelete/UpdateProduct";
 const FavoriteFruits = async ({ admin }: { admin: boolean }) => {
   const data = await getData(`products`);
 
+
+  const validImg = (str:string)=> {
+    let strType =str.slice(-3)
+    
+    if(strType != 'jpg'){
+      return 'https://t3.ftcdn.net/jpg/00/74/73/92/360_F_74739200_WG1Fdy15mIVeQapC6LqiaoLqNLPFVqzr.jpg';
+    }else {
+      return str;
+    }
+  }
+
   return (
     <div className="flex gap-4 flex-wrap">
       <Suspense fallback={".... Loading ...."}>
@@ -19,12 +30,13 @@ const FavoriteFruits = async ({ admin }: { admin: boolean }) => {
               <div key={fruit["_id"]} className="lg:w-[265px]">
                 <h3></h3>
                 <div className="card-img w-full h-[214px]">
+
                   <Image
-                    src={fruit.image}
+                    src={validImg(fruit.image)}
                     className="w-full object-cover h-full"
                     width={256}
                     height={214}
-                    alt={`${fruit.name} image`}
+                    alt={`${validImg(fruit.image)} image`}
                   />
                 </div>
 

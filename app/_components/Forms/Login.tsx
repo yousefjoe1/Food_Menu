@@ -43,7 +43,6 @@ const Login: FC = () => {
     if (res.code == 200) {
       setIsSubmit(false);
       msg({ title: res.msg, status: "success", duration: 3000 });
-      redirect.push("/admin-dash");
     } else {
       msg({ title: res.msg, status: "error", duration: 3000 });
       setIsSubmit(false);
