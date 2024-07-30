@@ -18,7 +18,7 @@ export async function adminLogin(api:String,data:UserItem) {
     cookies().set('admin-access','true')
     return {data: response.data,code: 200,msg: response.data.msg,status:response.data.status}; // Return the fetched data
   } catch (err:any) {
-    console.log('Error login admin data:', err.data);
+    console.log(err.data,'Error login admin data:', err.data);
     return {code: 'err.response.data?.status',data: null,msg:`Error in login admin - ${'err.response?.data.msg'}`,status: 'err.response.data.status'}
   }
 }

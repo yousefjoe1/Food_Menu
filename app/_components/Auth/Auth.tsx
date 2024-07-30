@@ -13,7 +13,7 @@ const Auth = async () => {
   console.log(user, "user details");
 
   return (
-    <div>
+    <>
       {user.data == true ? (
         <ChakraWrapper>
           <Logout />
@@ -23,7 +23,7 @@ const Auth = async () => {
           <AiOutlineLogin className="lg:text-2xl" />
         </Link>
       )}
-    </div>
+    </>
   );
 };
 

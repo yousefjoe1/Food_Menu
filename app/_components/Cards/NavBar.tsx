@@ -14,9 +14,9 @@ const NavBar = () => {
 
         <NavLinks />
         <div className="cart-auth flex gap-10 items-center">
-            <Cart />
-
             <Auth />
+
+            <Cart />
         </div>
     </nav>
   );

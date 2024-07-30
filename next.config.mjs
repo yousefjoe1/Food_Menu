@@ -32,6 +32,12 @@ remotePatterns: [
    port: '',
    pathname: '/**',
    },
+   {
+   protocol: 'https',
+   hostname: 'hillfresh.eu',
+   port: '',
+   pathname: '/**',
+   },
   ],
    },
   };

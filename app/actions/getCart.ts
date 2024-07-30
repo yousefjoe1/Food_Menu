@@ -1,12 +1,21 @@
 'use server'
 import axios from 'axios'; // Import axios
+import { cookies } from 'next/headers';
 
 
 let url = process.env.NEXT_PUBLIC_DB
 
-export async function getData(api:String) {
+export async function getCart(api:String) {
+  let token = cookies().get('user-tk-fruit')?.value
+
   try {
-    const response = await axios.get(`${url}${api}`); // Replace with your actual endpoint
+    const response = await axios.get(`${url}${api}`,{
+        headers: {
+          Authorization: `Bearer ${token}`
+        }
+      }); // Replace with your actual endpoint
+
+    // Handle successful response
     return response.data; // Return the fetched data
 
   } catch (err:any) {

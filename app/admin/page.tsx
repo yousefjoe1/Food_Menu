@@ -37,11 +37,10 @@ const Admin: FC = () => {
       email: email,
     };
 
-    let res = await adminLogin("users/admin-login", dataValues);
+    let res = await adminLogin("admin/login", dataValues);
 
     if (res.code == 200) {
       setIsSubmit(false);
-      console.log('admin true');
       
       msg({ title: res.msg, status: "success", duration: 3000 });
       redirect.push("/admin-dash");
@@ -100,7 +99,7 @@ const Admin: FC = () => {
               className=" bg-slate-500 text-white outline-none border-none w-full py-2 rounded-3xl"
               type="submit"
             >
-              Register
+              Log In
             </button>
           )}
 
