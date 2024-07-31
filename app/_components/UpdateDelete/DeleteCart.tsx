@@ -13,7 +13,7 @@ import {
   Spinner,
 } from "@chakra-ui/react";
 import { RiDeleteBin5Fill } from "react-icons/ri";
-import { deleteItem } from "@/app/actions/CartActions/DeleteItem";
+import { deleteItem } from "@/app/actions/CartActions/deleteItem";
 
 const DeleteCart = ({productId}:{productId:string}) => {
   const msg = useToast();
