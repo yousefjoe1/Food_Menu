@@ -43,9 +43,9 @@ const Register: FC = () => {
     if (res.code == 201) {
       setIsSubmit(false);
       msg({ title: res.msg, status: "success", duration: 3000 });
+      redirect.push("/");
     } else {
       msg({ title: res.msg, status: "error", duration: 3000 });
-      // redirect.push("/profile");
       setIsSubmit(false);
     }
   };
