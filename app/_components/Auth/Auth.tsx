@@ -10,7 +10,7 @@ import { ChakraWrapper } from "../Cards/HOC/ChakraWrapper";
 
 const Auth = async () => {
   const user = await verifyUser();
-  console.log(user, "user details");
+  // console.log(user, "user details");
 
   return (
     <>

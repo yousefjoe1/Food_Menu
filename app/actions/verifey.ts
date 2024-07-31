@@ -16,7 +16,7 @@ export async function verify() {
     return {data: false,code: 400,msg: false,status:false}; // Return the fetched data
   }
   try {
-    const response = await axios.get(`${url}users/verify`,{
+    const response = await axios.get(`${url}admin/verify`,{
       headers: {
         Authorization: `Bearer ${token}`
       }
@@ -24,7 +24,7 @@ export async function verify() {
     // Handle successful response
     return {data: true,code: 200,msg: response.data.msg,status:response.data.status}; // Return the fetched data
   } catch (err:any) {
-    console.log('Error login user data:', err.response);
-    return {code: err.response?.data?.status,data: null,msg:`Error in login - ${err.response?.data.msg}`,status: err.response?.data.status}
+    console.log('Error verify admin data:', err.response);
+    return {code: err.response?.data?.status,data: null,msg:`Error in admin verify - ${err.response?.data.msg}`,status: err.response?.data.status}
   }
 }

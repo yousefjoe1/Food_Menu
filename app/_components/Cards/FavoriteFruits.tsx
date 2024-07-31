@@ -7,9 +7,11 @@ import { ProductItem } from "@/app/Interfaces/Interface";
 import DeleteProduct from "../UpdateDelete/DeleteProduct";
 import { ChakraWrapper } from "./HOC/ChakraWrapper";
 import UpdateProduct from "../UpdateDelete/UpdateProduct";
+import CardBtns from "../Btns/CardBtns";
 
 const FavoriteFruits = async ({ admin }: { admin: boolean }) => {
   const data = await getData(`products`);
+// console.log(data,'products');
 
 
   const validImg = (str:string)=> {
@@ -25,7 +27,7 @@ const FavoriteFruits = async ({ admin }: { admin: boolean }) => {
   return (
     <div className="flex gap-4 flex-wrap">
       <Suspense fallback={".... Loading ...."}>
-        {data.status == "success"
+        {data.status == 'success'
           ? data.data.map((fruit: ProductItem) => (
               <div key={fruit["_id"]} className="lg:w-[265px]">
                 <h3></h3>
@@ -73,22 +75,14 @@ const FavoriteFruits = async ({ admin }: { admin: boolean }) => {
                       {" "}
                       {fruit.price}${" "}
                     </h4>
-
-                    <div className="btns flex items-center justify-between gap-5 mt-3">
-                      <div className="border-[1px] border-white text-white rounded-sm flex justify-around w-[95px] p-2 ">
-                        <button>+</button>
-                        <button>1</button>
-                        <button>-</button>
-                      </div>
-                      <button className="bg-[#DEC700] text-white w-[95px] p-2 rounded-sm ">
-                        Buy Now
-                      </button>
-                    </div>
+                    <ChakraWrapper>
+                    <CardBtns fruit={fruit} />
+                    </ChakraWrapper>
                   </div>
                 )}
               </div>
             ))
-          : data.msg}
+          : <span className="text-white">{data.msg}</span>}
       </Suspense>
     </div>
   );

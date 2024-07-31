@@ -11,6 +11,6 @@ export async function getData(api:String) {
 
   } catch (err:any) {
     console.error('Error fetching data:', err.response?.status);
-    return {status: err.response?.status,data: null,msg:`Error fetching data - ${err.response?.status}`}
+    return {status: err.response?.status ||'error',code:400, data: null,msg:`Error fetching data - ${err.response?.status}`}
   }
 }

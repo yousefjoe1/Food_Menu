@@ -6,6 +6,9 @@ import { verify } from "./app/actions/verifey";
 export async function middleware(request: NextRequest) {
   const resp = await verify();
 
+  console.log(resp);
+  
+
   if (resp.data == true) {
   } else {
     return NextResponse.redirect(new URL("/admin", request.url));
