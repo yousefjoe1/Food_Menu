@@ -19,6 +19,6 @@ export async function addUser(api:String,data:UserItem) {
     return {data: response.data,code: 201,msg: response.data.msg,status:response.data.status}; // Return the fetched data
   } catch (err:any) {
     console.error('Error add user data:', err.response);
-    return {code: err.response.data?.status,data: null,msg:`Error in register - ${err.response?.data.msg}`,status: err.response.data.status}
+    return {code: err.response.data?.code,data: null,msg:`Error in register - ${err.response?.data.msg}`,status: err.response.data.status}
   }
 }
