@@ -12,6 +12,7 @@ let url = process.env.NEXT_PUBLIC_DB
 
 export async function logout() {
     cookies().delete('user-tk-fruit')
+    cookies().delete('user-details')
     revalidatePath('/')
 //   try {
 //     const response = await axios.post(`${url}logout-user`,{...data}); // Replace with your actual endpoint

@@ -1,11 +1,11 @@
+import React, { Suspense } from "react";
 import Link from "next/link";
-import React from "react";
 
 import { AiOutlineLogin } from "react-icons/ai";
 
 import { verifyUser } from "@/app/actions/verifyUser";
-
 import Logout from "../User/Logout";
+
 import { ChakraWrapper } from "../Cards/HOC/ChakraWrapper";
 
 const Auth = async () => {
@@ -14,6 +14,8 @@ const Auth = async () => {
 
   return (
     <>
+    <Suspense fallback={''} >
+
       {user.data == true ? (
         <ChakraWrapper>
           <Logout />
@@ -23,6 +25,7 @@ const Auth = async () => {
           <AiOutlineLogin className="lg:text-2xl" />
         </Link>
       )}
+    </Suspense>
     </>
   );
 };

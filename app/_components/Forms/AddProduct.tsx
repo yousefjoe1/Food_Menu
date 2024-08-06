@@ -1,5 +1,5 @@
 "use client";
-import React, { useState } from "react";
+import React, { useRef, useState } from "react";
 
 import { Spinner, useToast } from "@chakra-ui/react";
 
@@ -10,31 +10,50 @@ interface ProductItem {
   name: string;
   price: string;
   image: string;
-  details:string
+  details:string;
 }
 
+interface TheImage {
+  image?: File | null;
+}
 function AddProduct() {
   const msg = useToast();
 
   const [isSubmit, setIsSubmit] = useState(false);
 
+  const avatarImg = useRef<HTMLInputElement | null>(null);
+  const [image, setImage] = useState<TheImage>({
+    image: null,
+  });
+
   const form = useForm<ProductItem>();
   const { register, handleSubmit, formState } = form;
   const { errors } = formState;
 
+  const handleFile = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const file = event.target.files?.[0];
+    setImage((prevProduct) => ({
+      ...prevProduct,
+      image: file || null,
+    }));
+  };
+
+
   const addFunction = async (data: ProductItem) => {
-    const { name, price, image,details } = data;
+
     setIsSubmit(true);
 
-    const dataValues = {
-      name: name,
-      price: price,
-      image: image,
-      details: details
-    };
-    
+    const { name,price,details } = data;
+    const formData = new FormData();
+    formData.append("username", name);
+    formData.append("price", price);
+    formData.append("details", details);
+    if(image.image != null){
+      formData.append("image", image?.image);
+    }
+
     setIsSubmit(true);
-    let res = await addProducts("products", dataValues);
+    let res = await addProducts("products", formData);
     setIsSubmit(false);
     console.log(res);
     if(res.status == 201){
@@ -82,12 +101,13 @@ function AddProduct() {
       </div>
 
       <div>
-        <label htmlFor="image">image Url</label>
-        <textarea
-          {...register("image", { required: "image required" })}
-          className="p-2 bg-slate-500 outline-none border-none block w-full rounded-lg"
-        />
-        <p className="text-red-500">{errors.image?.message}</p>
+        <label htmlFor="image">Image</label>
+        <input
+            ref={avatarImg}
+            onChange={handleFile}
+            type="file"
+            className="p-4 bg-slate-900 text-white outline-none border-none block rounded-3xl w-full "
+          />
       </div>
 
       {isSubmit ? (

@@ -14,6 +14,11 @@ interface FormValues {
   username: string;
   email: string;
   password: string;
+  avatar?: File | null;
+}
+
+interface TheAvatar {
+  avatar?: File | null;
 }
 
 const Register: FC = () => {
@@ -21,33 +26,65 @@ const Register: FC = () => {
 
   const { register, handleSubmit, formState } = form;
   const { errors } = formState;
+  const avatarImg = useRef<HTMLInputElement | null>(null);
 
   const msg = useToast();
 
   const [isSubmit, setIsSubmit] = useState(false);
 
+  const [avatar, setAvatar] = useState<TheAvatar>({
+    avatar: null,
+  });
+
+  const handleFile = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const file = event.target.files?.[0];
+    setAvatar((prevProduct) => ({
+      ...prevProduct,
+      avatar: file || null,
+    }));
+  };
+
   const redirect = useRouter();
 
   const loginFunc = async (data: FormValues) => {
-    const { username, email, password} = data;
+    const { username, email, password } = data;
+    const formData = new FormData();
+    formData.append("username", username);
+    formData.append("password", password);
+    formData.append("email", email);
+    if(avatar.avatar != null){
+      formData.append("avatar", avatar?.avatar);
+    }
+
+    // if (avatarImg.current?.files?.length != 0) {
+    //   const fileType: string | null | File | undefined =
+    //     avatarImg?.current?.files?.[0]?.type.split("/")[1];
+    //   const types = ["jpg", "jpeg", "png"].includes(fileType);
+    //   if (!types) {
+    //     msg({ title: "wrong file type", status: "success", duration: 3000 });
+    //     return;
+    //   } else {
+    //     let avatar: string | null | File | undefined =
+    //       avatarImg?.current?.files?.[0];
+    //     formData.append("avatar", avatar);
+    //   }
+    // }
+
     setIsSubmit(true);
 
-    const dataValues = {
-      username: username,
-      password: password,
-      email: email,
-    };
-
-    let res = await addUser("users/register", dataValues);
-
-    if (res.code == 201) {
-      setIsSubmit(false);
-      msg({ title: res.msg, status: "success", duration: 3000 });
-      redirect.push("/");
-    } else {
-      msg({ title: res.msg, status: "error", duration: 3000 });
-      setIsSubmit(false);
+    try {
+      let res = await addUser("users/register", formData);
+      // setIsSubmit(false);
+      if (res.code == 201) {
+        msg({ title: res.msg, status: "success", duration: 3000 });
+        redirect.push("/");
+      } else {
+        msg({ title: res.msg, status: "error", duration: 3000 });
+      }
+    } catch (er) {
+      console.log(er);
     }
+    setIsSubmit(false);
   };
 
   return (
@@ -58,7 +95,9 @@ const Register: FC = () => {
         onSubmit={handleSubmit(loginFunc)}
       >
         <div>
-          <label className="text-white" htmlFor="name">Name</label>
+          <label className="text-white" htmlFor="name">
+            Name
+          </label>
           <input
             {...register("username", { required: "user name required" })}
             type="text"
@@ -68,7 +107,9 @@ const Register: FC = () => {
         </div>
 
         <div>
-          <label className="text-white" htmlFor="email">Email</label>
+          <label className="text-white" htmlFor="email">
+            Email
+          </label>
           <input
             {...register("email", {
               required: "Email is required",
@@ -83,9 +124,10 @@ const Register: FC = () => {
           <p className="text-red-500">{errors.email?.message}</p>
         </div>
 
-
         <div>
-          <label className="text-white" htmlFor="password">Password</label>
+          <label className="text-white" htmlFor="password">
+            Password
+          </label>
           <input
             {...register("password", { required: "password required" })}
             type="password"
@@ -94,9 +136,21 @@ const Register: FC = () => {
           <p className="text-red-500">{errors.password?.message}</p>
         </div>
 
-        <div className="submit-btn">
+        <div>
+          <label className="text-white" htmlFor="avatar">
+            Avatar
+          </label>
+          <input
+            ref={avatarImg}
+            onChange={handleFile}
+            type="file"
+            className="p-4 bg-slate-900 text-white outline-none border-none block rounded-3xl w-full "
+          />
+        </div>
+
+        <div className="submit-btn mt-3">
           {isSubmit ? (
-            <Spinner size={"2xl"} height={50} width={1} />
+            <Spinner  size={"2xl"} color="white" height={50} width={1}  />
           ) : (
             <button
               className=" bg-slate-500 text-white outline-none border-none w-full py-2 rounded-3xl"
@@ -105,11 +159,16 @@ const Register: FC = () => {
               Register
             </button>
           )}
-
         </div>
       </form>
       <div className="img-wrapper">
-        <Image width={500} height={500} className="w-full rounded-r-3xl" alt="image" src={`https://res.cloudinary.com/upwork-cloud/image/upload/c_scale,w_1000/v1687802747/catalog/1673391100242911232/ixmsjupruwgd64xmnmks.jpg`} />
+        <Image
+          width={500}
+          height={500}
+          className="w-full rounded-r-3xl"
+          alt="image"
+          src={`https://res.cloudinary.com/upwork-cloud/image/upload/c_scale,w_1000/v1687802747/catalog/1673391100242911232/ixmsjupruwgd64xmnmks.jpg`}
+        />
       </div>
     </div>
   );
