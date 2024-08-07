@@ -3,13 +3,6 @@ import axios from 'axios'; // Import axios
 import { revalidatePath } from 'next/cache';
 import { cookies } from 'next/headers';
 
-interface ProductItem {
-  name: string;
-  price: string;
-  image: string;
-  details:string
-}
-
 let url = process.env.NEXT_PUBLIC_DB
 
 export async function addProducts(api:String,data:FormData) {
@@ -20,7 +13,7 @@ export async function addProducts(api:String,data:FormData) {
   }
 
   try {
-    const response = await axios.post(`${url}${api}`,{...data},{
+    const response = await axios.post(`${url}api/${api}`,data,{
       headers: {
         Authorization: `Bearer ${token}`
       }

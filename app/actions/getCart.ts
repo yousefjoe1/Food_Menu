@@ -11,7 +11,7 @@ export async function getCart(api:String) {
 
 
   try {
-    const response = await axios.get(`${url}${api}`,{
+    const response = await axios.get(`${url}api/${api}`,{
         headers: {
           Authorization: `Bearer ${token}`
         }

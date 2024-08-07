@@ -7,6 +7,10 @@ const nextConfig = {
    //  },
 images: {
 remotePatterns: [
+   {
+      protocol: 'http',
+      hostname: 'localhost',
+    },
 {
    protocol: 'https',
    hostname: '***.com',
@@ -48,6 +52,12 @@ remotePatterns: [
    hostname: 'hillfresh.eu',
    port: '',
    pathname: '/**',
+   },
+   {
+   protocol: 'http',
+   hostname: 'localhost:4000',
+   port: '',
+   pathname: '',
    },
   ],
    },

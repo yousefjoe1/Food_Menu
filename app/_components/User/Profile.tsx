@@ -51,11 +51,11 @@ const Profile = () => {
             <ModalBody>
               {details != null ? (
                 <>
+                  <h3 className="lg:text-2xl p-3 w-[80px] h-[80px] overflow-hidden rounded-xl">
+                    <Image src={`${process.env.NEXT_PUBLIC_DB}uploads/${details.avatar}`} className="rounded-xl w-full h-full object-cover" alt="avatar" width={80} height={80} />
+                  </h3>
                   <h3 className="lg:text-3xl p-3">{details.username}</h3>
                   <h3 className="lg:text-2xl p-3">{details.email}</h3>
-                  {/* <h3 className="lg:text-2xl p-3">
-                    <Image src={process.env.NEXT_PUBLIC_DB + details.avatar} alt="avatar" width={50} height={50} />
-                  </h3> */}
                 </>
               ) : (
                 "You are not logged in"

@@ -11,13 +11,13 @@ import CardBtns from "../Btns/CardBtns";
 
 const FavoriteFruits = async ({ admin }: { admin: boolean }) => {
   const data = await getData(`products`);
-// console.log(data,'products');
+console.log(data,'products');
 
 
   const validImg = (str:string)=> {
     let strType =str.slice(-3)
     
-    if(strType != 'jpg'){
+    if(strType != 'jpg' ){
       return 'https://t3.ftcdn.net/jpg/00/74/73/92/360_F_74739200_WG1Fdy15mIVeQapC6LqiaoLqNLPFVqzr.jpg';
     }else {
       return str;
@@ -34,7 +34,8 @@ const FavoriteFruits = async ({ admin }: { admin: boolean }) => {
                 <div className="card-img w-full h-[214px]">
 
                   <Image
-                    src={validImg(fruit.image)}
+                    // src={`${validImg(`${process.env.NEXT_PUBLIC_DB}uploads/${fruit.image}`)}`}
+                    src={`${`${process.env.NEXT_PUBLIC_DB}uploads/${fruit.image}`}`}
                     className="w-full object-cover h-full"
                     width={256}
                     height={214}

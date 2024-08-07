@@ -7,7 +7,7 @@ let url = process.env.NEXT_PUBLIC_DB
 export async function addUser(api:String,data:FormData) {
 
   try {
-    const response = await axios.post(`${url}${api}`,data); // Replace with your actual endpoint
+    const response = await axios.post(`${url}api/${api}`,data); // Replace with your actual endpoint
     // Handle successful response
     cookies().set('user-tk-fruit',response.data.token)
 

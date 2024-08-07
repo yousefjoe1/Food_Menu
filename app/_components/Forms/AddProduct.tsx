@@ -45,7 +45,7 @@ function AddProduct() {
 
     const { name,price,details } = data;
     const formData = new FormData();
-    formData.append("username", name);
+    formData.append("name", name);
     formData.append("price", price);
     formData.append("details", details);
     if(image.image != null){
@@ -74,7 +74,7 @@ function AddProduct() {
         <input
           {...register("name", { required: "name required" })}
           type="text"
-          className="p-2 bg-slate-500 outline-none border-none block w-full rounded-lg"
+          className="p-4 bg-slate-900 text-white outline-none border-none block rounded-3xl w-full"
         />
         <p className="text-red-500">{errors.name?.message}</p>
       </div>
@@ -83,7 +83,7 @@ function AddProduct() {
         <input
           {...register("details", { required: "details required" })}
           type="text"
-          className="p-2 bg-slate-500 outline-none border-none block w-full rounded-lg"
+          className="p-4 bg-slate-900 text-white outline-none border-none block rounded-3xl w-full"
         />
         <p className="text-red-500">{errors.details?.message}</p>
       </div>
@@ -95,7 +95,7 @@ function AddProduct() {
             required: "price is required",
           })}
           type="number"
-          className="p-2 bg-slate-500 outline-none border-none block w-full rounded-lg"
+          className="p-4 bg-slate-900 text-white outline-none border-none block rounded-3xl w-full"
         />
         <p className="text-red-500">{errors.price?.message}</p>
       </div>
@@ -106,7 +106,7 @@ function AddProduct() {
             ref={avatarImg}
             onChange={handleFile}
             type="file"
-            className="p-4 bg-slate-900 text-white outline-none border-none block rounded-3xl w-full "
+            className="p-4 bg-slate-900 text-white outline-none border-none block rounded-3xl w-full"
           />
       </div>
 
