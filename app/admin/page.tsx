@@ -9,7 +9,6 @@ import { Spinner, useToast } from "@chakra-ui/react";
 import { useForm } from "react-hook-form";
 
 import { adminLogin } from "../actions/adminLogin";
-import { ChakraWrapper } from "../_components/Cards/HOC/ChakraWrapper";
 
 interface FormValues {
   email: string;
