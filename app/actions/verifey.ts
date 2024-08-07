@@ -16,7 +16,7 @@ export async function verify() {
     return {data: false,code: 400,msg: false,status:false}; // Return the fetched data
   }
   try {
-    const response = await axios.get(`${url}api/admin/verify`,{
+    const response = await axios.get(`${url}admin/verify`,{
       headers: {
         Authorization: `Bearer ${token}`
       }

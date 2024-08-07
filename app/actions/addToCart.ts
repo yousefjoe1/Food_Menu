@@ -19,7 +19,7 @@ export async function addToCart(item:ProductItem) {
   }
 
   try {
-    const response = await axios.post(`${url}api/cart/add-to-cart`,{...item},{headers: {Authorization: `Bearer ${token}`}});
+    const response = await axios.post(`${url}cart/add-to-cart`,{...item},{headers: {Authorization: `Bearer ${token}`}});
       revalidatePath('/')
 
     return response.data;

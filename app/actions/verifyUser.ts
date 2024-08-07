@@ -18,7 +18,7 @@ export async function verifyUser() {
   }
 
   try {
-    const response = await axios.get(`${url}api/users/verify-user`,{
+    const response = await axios.get(`${url}users/verify-user`,{
       headers: {
         Authorization: `Bearer ${token}`
       }

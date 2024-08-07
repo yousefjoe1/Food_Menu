@@ -13,7 +13,7 @@ export async function addProducts(api:String,data:FormData) {
   }
 
   try {
-    const response = await axios.post(`${url}api/${api}`,data,{
+    const response = await axios.post(`${url}${api}`,data,{
       headers: {
         Authorization: `Bearer ${token}`
       }
