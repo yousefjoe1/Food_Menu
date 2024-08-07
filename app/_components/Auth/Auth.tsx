@@ -14,8 +14,6 @@ const Auth = async () => {
 
   return (
     <>
-    <Suspense fallback={''} >
-
       {user.data == true ? (
         <ChakraWrapper>
           <Logout />
@@ -25,7 +23,6 @@ const Auth = async () => {
           <AiOutlineLogin className="lg:text-2xl" />
         </Link>
       )}
-    </Suspense>
     </>
   );
 };

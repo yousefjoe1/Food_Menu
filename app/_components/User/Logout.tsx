@@ -6,7 +6,8 @@ import { logout } from "@/app/actions/logout";
 
 const Logout = () => {
   const logoutFunc = async () => {
-    logout();
+    await logout();
+    window.location.reload();
   };
 
   return (

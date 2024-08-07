@@ -11,9 +11,9 @@ interface UserItem {
 let url = process.env.NEXT_PUBLIC_DB
 
 export async function logout() {
-    cookies().delete('user-tk-fruit')
-    cookies().delete('user-details')
-    revalidatePath('/')
+    await cookies().delete('user-tk-fruit')
+    await cookies().delete('user-details')
+    await revalidatePath('/')
 //   try {
 //     const response = await axios.post(`${url}logout-user`,{...data}); // Replace with your actual endpoint
 //     // Handle successful response

@@ -19,7 +19,7 @@ const Hero = () => {
       </div>
       <Image src={`/Pineapple.png`} alt="background-image" width={1000} height={500} className="w-full lg:h-full lg:object-contain" />
 
-      <div className="section-footer bg-slate-400/55 h-[400px] rounded-3xl px-7 flex lg:flex-row flex-col justify-between items-center flex-wrap absolute bottom-0 left-0 ">
+      {/* <div className="section-footer bg-slate-400/55 h-[400px] rounded-3xl px-7 flex lg:flex-row flex-col justify-between items-center flex-wrap absolute bottom-0 left-0 ">
         <h2 className="basis-1/2 lg:text-3xl text-sm font-bold text-white">
           Fresh Fruit & <br /> Amazing Taist
         </h2>
@@ -30,7 +30,7 @@ const Hero = () => {
         </h4>
         <p>Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint. Velit officia consequat duis enim velit mollit. Exercitation veniam consequat sunt nostrud amet.</p>      
         </div>
-      </div>
+      </div> */}
     </section>
   )
 }

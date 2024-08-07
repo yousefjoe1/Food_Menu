@@ -16,7 +16,7 @@ const NavBar = () => {
         <h3>Empire</h3>
       </Link>
 
-        <NavLinks />
+        {/* <NavLinks /> */}
         <div className="cart-auth flex gap-10 items-center">
             <Auth />
 

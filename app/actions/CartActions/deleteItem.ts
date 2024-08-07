@@ -9,7 +9,7 @@ export async function deleteItem(id:string) {
   let token = cookies().get('user-tk-fruit')?.value
 
   try {
-    const response = await axios.delete(`${url}cart/${id}`,
+    const response = await axios.delete(`${url}api/cart/${id}`,
         {
             headers: {
               Authorization: `Bearer ${token}`

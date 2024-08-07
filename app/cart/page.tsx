@@ -1,5 +1,4 @@
 import React, { Suspense } from "react";
-import { RiDeleteBin5Fill } from "react-icons/ri";
 
 import Image from "next/image";
 import { getCart } from "../actions/getCart";
@@ -18,11 +17,11 @@ interface Item {
   user_id: string;
   product: Product;
   count: string;
+  image: string
 }
 
 const page = async () => {
   const cart = await getCart("cart");
-  console.log(cart,'cart');
   
   const validImg = (str: string) => {
     let strType = str.slice(-3);
@@ -53,7 +52,7 @@ const page = async () => {
                 <div className="flex gap-2">
                   <div className="img-wrapper w-[200px] ">
                     <Image
-                      src={validImg(item.product.image)}
+                      src={`${`${process.env.NEXT_PUBLIC_DB}uploads/${item.product.image}`}`}
                       className="w-full h-full"
                       height={200}
                       width={200}
