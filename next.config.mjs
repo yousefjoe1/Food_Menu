@@ -53,12 +53,6 @@ remotePatterns: [
    port: '',
    pathname: '/**',
    },
-   {
-   protocol: 'http',
-   hostname: 'localhost:4000',
-   port: '',
-   pathname: '',
-   },
   ],
    },
   };
