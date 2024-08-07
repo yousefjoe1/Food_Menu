@@ -21,7 +21,19 @@ const nextConfig = {
       },
       {
         protocol: "https",
-        hostname: "https://node-js-e-commerce-1-y-1.vercel.app/",
+        hostname: "node-js-e-commerce-1-y-1.vercel.app",
+        port: "",
+        pathname: "/**",
+      },
+      {
+        protocol: "https",
+        hostname: "bit.ly",
+        port: "",
+        pathname: "/**",
+      },
+      {
+        protocol: "https",
+        hostname: "www.sender.net",
         port: "",
         pathname: "/**",
       },
