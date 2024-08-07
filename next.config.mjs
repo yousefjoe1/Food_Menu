@@ -20,8 +20,8 @@ const nextConfig = {
         pathname: "/**",
       },
       {
-        protocol: "http",
-        hostname: "localhost:4000",
+        protocol: "https",
+        hostname: "https://node-js-e-commerce-1-y-1.vercel.app/",
         port: "",
         pathname: "/**",
       },
