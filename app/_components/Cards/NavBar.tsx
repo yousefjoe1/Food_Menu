@@ -4,7 +4,6 @@ import Auth from "../Auth/Auth";
 import NavLinks from "../NavLinks/NavLinks";
 import Link from "next/link";
 
-import { FaUserCog } from "react-icons/fa";
 import Profile from "../User/Profile";
 
 const NavBar = () => {

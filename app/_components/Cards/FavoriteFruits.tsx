@@ -11,7 +11,7 @@ import CardBtns from "../Btns/CardBtns";
 
 const FavoriteFruits = async ({ admin }: { admin: boolean }) => {
   const data = await getData(`products`);
-console.log(data,'products');
+// console.log(data,'products - FavoriteFruits');
 
 
   const validImg = (str:string)=> {

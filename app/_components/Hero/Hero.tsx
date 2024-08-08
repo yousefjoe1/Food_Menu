@@ -7,9 +7,12 @@ const Hero = () => {
   return (
     <section className="hero-section lg:h-screen md:h-1/2 h-[500px] relative overflow-hidden">
       <div className="lg:h-[210px] md:h-36 absolute z-20 lg:-right-3 right-0 top-4 rounded-l-3xl bg-yellow-300 flex lg:flex-col justify-between lg:pl-3 px-4 py-3 lg:w-14 w-32 ">
-        <a target="_blank" className="lg:text-2xl" href={`https://www.linkedin.com/in/youssefmahmoud1/`}>
+        {/* <a target="_blank" className="lg:text-2xl" href={`https://www.linkedin.com/in/youssefmahmoud1/`}>
             <FaLinkedinIn className="text-slate-400" />
-        </a>
+        </a> */}
+        <Link className="lg:text-2xl" href={`/`}>
+        <FaLinkedinIn className="text-slate-400" />
+        </Link>
         <Link className="lg:text-2xl" href={`/`}>
             <FaFacebookF className="text-slate-400" />
         </Link>

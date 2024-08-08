@@ -74,6 +74,8 @@ const Register: FC = () => {
 
     try {
       let res = await addUser("users/register", formData);
+      console.log(res.code);
+      
       // setIsSubmit(false);
       if (res.code == 201) {
         msg({ title: res.msg, status: "success", duration: 3000 });

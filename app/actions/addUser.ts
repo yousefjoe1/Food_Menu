@@ -13,9 +13,9 @@ export async function addUser(api:String,data:FormData) {
 
     let user = JSON.stringify(response.data.data.token)
     cookies().set('user-details',user)
-    console.log(response.data.data ,'response data');
+    // console.log(response.data.data ,'response data');
     
-    return {data: response.data.data,code: 201,msg: response.data.data.msg,status:response.data.data.status}; // Return the fetched data
+    return {data: response.data.data,code: response.data.data.code,msg: response.data.data.msg,status:response.data.data.status}; // Return the fetched data
   } catch (err:any) {
     console.error('Error add user data:', err.response);
     return {code: err.response.data?.code,data: null,msg:`Error in register - ${err.response?.data.msg}`,status: err.response.data.status}

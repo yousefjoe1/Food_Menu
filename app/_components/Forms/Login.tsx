@@ -37,7 +37,7 @@ const Login: FC = () => {
     };
 
     let res = await loginUser("users/login", dataValues);
-    console.log(res,'login res');
+    // console.log(res,'login res');
     
 
     if (res.code == 200) {

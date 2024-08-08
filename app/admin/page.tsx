@@ -28,7 +28,7 @@ const Admin: FC = () => {
   const redirect = useRouter();
 
   const loginFunc = async (data: FormValues) => {
-    const { email, password} = data;
+    const { email, password } = data;
     setIsSubmit(true);
 
     const dataValues = {
@@ -38,9 +38,11 @@ const Admin: FC = () => {
 
     let res = await adminLogin("admin/login", dataValues);
 
+    console.log(res);
+
     if (res.code == 200) {
       setIsSubmit(false);
-      
+
       msg({ title: res.msg, status: "success", duration: 3000 });
       redirect.push("/admin-dash");
     } else {
@@ -56,9 +58,10 @@ const Admin: FC = () => {
         className="bg-slate-800 grid lg:grid-cols-1 md:grid-cols-1 p-5 gap-y-2 rounded-l-3xl"
         onSubmit={handleSubmit(loginFunc)}
       >
-
         <div>
-          <label className="text-white" htmlFor="email">Email</label>
+          <label className="text-white" htmlFor="email">
+            Email
+          </label>
           <input
             {...register("email", {
               required: "Email is required",
@@ -73,9 +76,10 @@ const Admin: FC = () => {
           <p className="text-red-500">{errors.email?.message}</p>
         </div>
 
-
         <div>
-          <label className="text-white" htmlFor="password">Password</label>
+          <label className="text-white" htmlFor="password">
+            Password
+          </label>
           <input
             {...register("password", { required: "password required" })}
             type="password"
@@ -87,12 +91,12 @@ const Admin: FC = () => {
         <div className="submit-btn">
           {isSubmit ? (
             <Spinner
-  thickness='4px'
-  speed='0.65s'
-  emptyColor='gray.200'
-  color='blue.500'
-  size='xl'
-/>
+              thickness="4px"
+              speed="0.65s"
+              emptyColor="gray.200"
+              color="blue.500"
+              size="xl"
+            />
           ) : (
             <button
               className=" bg-slate-500 text-white outline-none border-none w-full py-2 rounded-3xl"
@@ -101,11 +105,16 @@ const Admin: FC = () => {
               Log In
             </button>
           )}
-
         </div>
       </form>
       <div className="img-wrapper">
-        <Image width={500} height={500} className="w-full rounded-r-3xl" alt="image" src={`https://res.cloudinary.com/upwork-cloud/image/upload/c_scale,w_1000/v1687802747/catalog/1673391100242911232/ixmsjupruwgd64xmnmks.jpg`} />
+        <Image
+          width={500}
+          height={500}
+          className="w-full rounded-r-3xl"
+          alt="image"
+          src={`https://res.cloudinary.com/upwork-cloud/image/upload/c_scale,w_1000/v1687802747/catalog/1673391100242911232/ixmsjupruwgd64xmnmks.jpg`}
+        />
       </div>
     </div>
   );
