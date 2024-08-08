@@ -26,9 +26,10 @@ const DeleteProduct = ({ id }: { id: string }) => {
   const deletePro = async () => {
     setIsSubmit(true);
     let res = await deleteProduct(`products/${id}`);
+    console.log(res);
+    
     setIsSubmit(false);
-    // console.log(res);
-    if (res.status == 201) {
+    if (res.code == 201) {
       msg({ title: res.msg, status: "success", duration: 3000 });
     } else {
       msg({ title: res.msg, status: "error", duration: 3000 });
