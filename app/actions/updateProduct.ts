@@ -1,25 +1,31 @@
 'use server'
 import axios from 'axios'; // Import axios
 import { revalidatePath } from 'next/cache';
+import { cookies } from 'next/headers';
 
 interface ProductItem {
     _id:string;
     name: string;
-    price: string | number;
-    in_cart:boolean;
-    image: string;
+    price: string;
+    image: string | File;
     details: string;
 }
 
 let url = process.env.NEXT_PUBLIC_DB
 
-export async function updateProduct(api:String,data:ProductItem) {
+export async function updateProduct(api:String,data:FormData) {
+  let token = cookies().get('admin-tk-fruit')?.value
+  
   try {
-    const response = await axios.patch(`${url}${api}`,{...data}); // Replace with your actual endpoint
+    const response = await axios.patch(`${url}${api}`,data,{
+      headers: {
+        Authorization: `Bearer ${token}`
+      }
+    }); // Replace with your actual endpoint
 
     revalidatePath('/admin-dash')
     // Handle successful response
-    return {data: response.data,status: 201,msg: 'Updated'}; // Return the fetched data
+    return {code: response.data.code,msg: response.data.msg}; // Return the fetched data
 
   } catch (err:any) {
     console.error('Error fetching data:', err.response?.status);

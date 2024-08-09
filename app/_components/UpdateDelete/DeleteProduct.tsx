@@ -26,7 +26,7 @@ const DeleteProduct = ({ id }: { id: string }) => {
   const deletePro = async () => {
     setIsSubmit(true);
     let res = await deleteProduct(`products/${id}`);
-    console.log(res);
+    // console.log(res);
     
     setIsSubmit(false);
     if (res.code == 201) {

@@ -1,5 +1,5 @@
 "use client";
-import React, { useState } from "react";
+import React, { FormEvent, useRef, useState } from "react";
 
 import {
   Modal,
@@ -13,20 +13,45 @@ import {
   Spinner,
 } from "@chakra-ui/react";
 
-import { ProductItem } from "@/app/Interfaces/Interface";
+// import { ProductItem } from "@/app/Interfaces/Interface";
 import { updateProduct } from "@/app/actions/updateProduct";
 
+interface ProductItem {
+  _id:string;
+  name: string;
+  price: string ;
+  image: string | File;
+  details: string;
+}
+
+interface TheImage {
+  image?: File | null;
+}
+
 const UpdateProduct = ({ fruit }: { fruit: ProductItem }) => {
+  const productImgRef = useRef<HTMLInputElement | null>(null);
+  const [image, setImage] = useState<TheImage>({
+    image: null,
+  });
+  const handleFile = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const file = event.target.files?.[0];
+    setImage((prevProduct) => ({
+      ...prevProduct,
+      image: file || null,
+    }));
+  };
   const [product, setProduct] = useState({ ...fruit });
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>)=> {
+  const handleChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+  ) => {
     const { name, value } = e.target; // Destructure event target properties
 
     setProduct((prevState) => ({
       ...prevState,
-      [name]:  value, // Handle image input differently
+      [name]: value, // Handle image input differently
     }));
-  }
+  };
 
   const msg = useToast();
 
@@ -34,12 +59,26 @@ const UpdateProduct = ({ fruit }: { fruit: ProductItem }) => {
 
   const { isOpen, onOpen, onClose } = useDisclosure();
 
-  const deletePro = async () => {
+  const updateProductFunc = async (e:FormEvent) => {
+    e.preventDefault()
+    const { name, price,_id, details} = product;
+    const productimg = product.image
+    const formData = new FormData();
+    formData.append("name", name);
+    formData.append("price", price);
+    formData.append("details", details);
+    formData.append("_id", _id);
+    if (image.image != null) {
+      formData.append("image", image?.image);
+    }else{
+      formData.append("image", productimg);
+    } 
+
     setIsSubmit(true);
-    let res = await updateProduct(`products/${fruit._id}`,product);
+    let res = await updateProduct(`products/${fruit._id}`, formData);
     setIsSubmit(false);
-    if (res.status == 201) {
-        msg({ title: res.msg, status: "success", duration: 3000 });
+    if (res.code == 201) {
+      msg({ title: res.msg, status: "success", duration: 3000 });
     } else {
       msg({ title: res.msg, status: "error", duration: 3000 });
     }
@@ -57,13 +96,12 @@ const UpdateProduct = ({ fruit }: { fruit: ProductItem }) => {
           <br />
           <ModalCloseButton />
           <ModalBody>
-            <form>
+            <form onSubmit={updateProductFunc}>
               <div>
                 <label htmlFor="name">Name</label>
                 <input
-                onChange={handleChange}
-                name="name"
-
+                  onChange={handleChange}
+                  name="name"
                   value={product.name}
                   required
                   type="text"
@@ -73,8 +111,8 @@ const UpdateProduct = ({ fruit }: { fruit: ProductItem }) => {
               <div>
                 <label htmlFor="price">Price</label>
                 <input
-                name="price"
-                onChange={handleChange}
+                  name="price"
+                  onChange={handleChange}
                   value={product.price}
                   required
                   type="number"
@@ -84,8 +122,8 @@ const UpdateProduct = ({ fruit }: { fruit: ProductItem }) => {
               <div>
                 <label htmlFor="details">Details</label>
                 <textarea
-                name="details"
-                onChange={handleChange}
+                  name="details"
+                  onChange={handleChange}
                   value={product.details}
                   required
                   className="p-2 min-h-[100px] bg-slate-500 outline-none border-none block w-full rounded-lg"
@@ -93,26 +131,21 @@ const UpdateProduct = ({ fruit }: { fruit: ProductItem }) => {
               </div>
               <div>
                 <label htmlFor="image">Image</label>
-                <textarea
-                name="image"
-                
-                onChange={handleChange}
-                  value={product.image}
-                  required
-                  className="p-2 min-h-[100px] bg-slate-500 outline-none border-none block w-full rounded-lg"
+                <input
+                  ref={productImgRef}
+                  onChange={handleFile}
+                  type="file"
+                  className="p-4 bg-slate-900 text-white outline-none border-none block rounded-3xl w-full"
                 />
               </div>
-            </form>
             {isSubmit ? (
               <Spinner size={"2xl"} height={50} width={1} color="blue" />
             ) : (
-              <button
-                className="text-orange-600 bg-black mt-3 p-2 rounded-xl font-bold text-md"
-                onClick={deletePro}
-              >
+              <button type="submit" className="text-orange-600 bg-black mt-3 p-2 rounded-xl font-bold text-md">
                 Update Now
               </button>
             )}
+            </form>
           </ModalBody>
 
           <ModalFooter>
