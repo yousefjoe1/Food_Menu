@@ -14,11 +14,11 @@ export async function adminLogin(api:String,data:UserItem) {
     const response = await axios.post(`${url}${api}`,{...data}); // Replace with your actual endpoint
     // Handle successful response
     // console.log(response.data.data,'login admin');
-    cookies().set('admin-tk-fruit',response.data.data.token)
+    cookies().set('admin-tk-fruit',response.data.token)
     cookies().set('admin-access','true')
-    return {data: response.data.data,code: response.data.data.code,msg: response.data.data.msg,status:response.data.data.status}; // Return the fetched data
+    return {data: response.data.data,code: response.data.code,msg: response.data.msg,status:response.data.status}; // Return the fetched data
   } catch (err:any) {
-    console.log(err.response.data,'Error login admin data:', err.data);
-    return {code: err.response.data?.status,data: null,msg:`Error in login admin - ${err.response?.data.msg}`,status: 'err.response.data.status'}
+    console.log('err.response',err.response,'Error login admin data:');
+    return {code: err.response.code,data: null,msg:`Error in login admin`,status: 'err.response.data.status'}
   }
 }

@@ -36,19 +36,18 @@ const Admin: FC = () => {
       email: email,
     };
 
+    // setIsSubmit(false);
     let res = await adminLogin("admin/login", dataValues);
 
     console.log(res);
 
     if (res.code == 200) {
-      setIsSubmit(false);
-
       msg({ title: res.msg, status: "success", duration: 3000 });
       redirect.push("/admin-dash");
     } else {
       msg({ title: res.msg, status: "error", duration: 3000 });
-      setIsSubmit(false);
     }
+    setIsSubmit(false);
   };
 
   return (
@@ -92,6 +91,7 @@ const Admin: FC = () => {
           {isSubmit ? (
             <Spinner
               thickness="4px"
+              h={10}
               speed="0.65s"
               emptyColor="gray.200"
               color="blue.500"
