@@ -9,6 +9,7 @@ import { Spinner, useToast } from "@chakra-ui/react";
 import { useForm } from "react-hook-form";
 
 import { loginUser } from "@/app/actions/loginUser";
+import { verifyUser } from "@/app/actions/verifyUser";
 
 interface FormValues {
   email: string;
@@ -40,9 +41,10 @@ const Login: FC = () => {
     // console.log(res,'login res');
     
 
-    if (res.code == 200) {
+    if (res.code == 201) {
       setIsSubmit(false);
       msg({ title: res.msg, status: "success", duration: 3000 });
+      await verifyUser()
       redirect.push('/')
     } else {
       msg({ title: res.msg, status: "error", duration: 3000 });

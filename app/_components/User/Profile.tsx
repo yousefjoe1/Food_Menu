@@ -27,7 +27,7 @@ const Profile = () => {
   const { isOpen, onOpen, onClose } = useDisclosure();
   const [details, setDetails] = useState<User | null>(null);
 
-  console.log(details);
+  // console.log(details);
   
 
   const showDetails = async () => {

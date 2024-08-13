@@ -11,6 +11,8 @@ let url = process.env.NEXT_PUBLIC_DB
 
 export async function getUserDetails() {
     let u = cookies().get('user-details')?.value
+    // console.log(u);
+    
     
     if(u!=undefined){
         let user = JSON.parse(u)

@@ -9,7 +9,7 @@ export async function deleteItem(id:string) {
   let token = cookies().get('user-tk-fruit')?.value
 
   try {
-    const response = await axios.delete(`${url}api/cart/${id}`,
+    const response = await axios.delete(`${url}cart/${id}`,
         {
             headers: {
               Authorization: `Bearer ${token}`
@@ -22,7 +22,7 @@ export async function deleteItem(id:string) {
     return {data: response.data,status: 201,msg: 'Deleted'}; // Return the fetched data
 
   } catch (err:any) {
-    console.error('Error delete cart item:', err.response?.status);
+    console.log('Error delete cart item:', err.response,'Error delete cart item:');
     return {status: err.response?.status,data: null,msg:`Error delete cart item - ${err.response?.status}`}
   }
 }

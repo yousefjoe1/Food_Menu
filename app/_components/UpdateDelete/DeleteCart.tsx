@@ -26,7 +26,7 @@ const DeleteCart = ({productId}:{productId:string}) => {
     setIsSubmit(true);
     let res = await deleteItem(`${productId}`);
     setIsSubmit(false);
-    // console.log(res);
+    console.log(res,'deleteItem');
     if (res.status == 201) {
       msg({ title: res.msg, status: "success", duration: 3000 });
     } else {
