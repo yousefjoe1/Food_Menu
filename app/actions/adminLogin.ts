@@ -19,6 +19,6 @@ export async function adminLogin(api:String,data:UserItem) {
     return {data: response.data.data,code: response.data.code,msg: response.data.msg,status:response.data.status}; // Return the fetched data
   } catch (err:any) {
     console.log('err.response',err.response,'Error login admin data:');
-    return {code: err.response.code,data: null,msg:`Error in login admin`,status: 'err.response.data.status'}
+    return {code: err.response.code,data: null,msg:`Error in login admin`,status: 'err.response.data.status',er:err.response,err:err}
   }
 }
