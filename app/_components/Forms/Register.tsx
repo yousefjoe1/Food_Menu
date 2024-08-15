@@ -74,7 +74,7 @@ const Register: FC = () => {
 
     try {
       let res = await addUser("users/register", formData);
-      console.log(res.code);
+      console.log(res);
       
       // setIsSubmit(false);
       if (res.code == 201) {

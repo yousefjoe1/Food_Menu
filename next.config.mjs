@@ -19,7 +19,7 @@ const nextConfig = {
       },
       {
         protocol: "https",
-        hostname: "node-js-e-commerce-1-y-1.vercel.app",
+        hostname: "fruit-commerc.vercel.app",
         port: "",
         pathname: "/**",
       },

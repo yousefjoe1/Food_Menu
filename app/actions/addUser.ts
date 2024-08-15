@@ -11,7 +11,7 @@ export async function addUser(api:String,data:FormData) {
     // Handle successful response
     cookies().set('user-tk-fruit',response.data.token)
 
-    let user = JSON.stringify(response.data.token)
+    let user = JSON.stringify(response.data.data)
     cookies().set('user-details',user)
     // console.log(response.data.data ,'response data');
     
