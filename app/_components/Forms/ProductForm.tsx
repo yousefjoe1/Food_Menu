@@ -20,7 +20,7 @@ const ProductForm = () => {
   const msg = useToast();
   const form = useForm<FormValues>();
 
-  const { register,handleSubmit, formState } = form;
+  const { register,handleSubmit, formState ,reset} = form;
 
   const [isSubmit, setIsSubmit] = useState(false);
 
@@ -53,9 +53,9 @@ const ProductForm = () => {
     setIsSubmit(true);
     let res = await addProducts("products", formData);
     setIsSubmit(false);
-    console.log(res.code);
     if (res.code == 201) {
       msg({ title: res.msg, status: "success", duration: 3000 });
+      reset()
     } else {
       msg({ title: res.msg, status: "error", duration: 3000 });
     }
@@ -71,7 +71,10 @@ const ProductForm = () => {
       </div>
 
       <div onSubmit={handleSubmit(addFunction)} className="relative -mt-40 m-4">
-        <form className="bg-white max-w-xl w-full mx-auto shadow-[0_2px_10px_-3px_rgba(6,81,237,0.3)] p-8 rounded-2xl">
+        <form className={`bg-white max-w-xl mx-auto w-full shadow-[0_2px_10px_-3px_rgba(6,81,237,0.3)] p-8 rounded-2xl transition-all ease-linear duration-200 overflow-hidden ${isSubmit ? 'h-[20px]' : 'h-[600px]'} `}>
+        {
+          isSubmit && <Spinner size={"2xl"} height={50} width={1} color="blue" />
+        }
           <div className="mb-12">
             <h3 className="text-gray-800 text-3xl font-bold text-center">
               Add Product
@@ -131,9 +134,9 @@ const ProductForm = () => {
               className="w-full bg-transparent text-sm text-gray-800 border-b border-gray-300 focus:border-blue-500 px-2 py-3 outline-none"
             />
           </div>
-          <div className="mt-8">
+          <div className="mt-8 flex-1">
             {isSubmit ? (
-              <Spinner size={"2xl"} height={50} width={1} color="blue" />
+              ''
             ) : (
               <button
                 type="submit"
