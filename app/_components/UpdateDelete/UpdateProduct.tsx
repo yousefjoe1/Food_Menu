@@ -71,7 +71,7 @@ const UpdateProduct = ({ fruit }: { fruit: ProductItem }) => {
     if (image.image != null) {
       formData.append("image", image?.image);
     }else{
-      formData.append("image", productimg);
+      // formData.append("image", productimg);
     } 
 
     setIsSubmit(true);
@@ -94,7 +94,7 @@ const UpdateProduct = ({ fruit }: { fruit: ProductItem }) => {
         <ModalContent>
           <br />
           <br />
-          <ModalCloseButton />
+          <ModalCloseButton bg={'GrayText'} />
           <ModalBody>
             <form onSubmit={updateProductFunc}>
               <div>
@@ -105,7 +105,7 @@ const UpdateProduct = ({ fruit }: { fruit: ProductItem }) => {
                   value={product.name}
                   required
                   type="text"
-                  className="p-2 bg-slate-500 outline-none border-none block w-full rounded-lg"
+                  className="p-4 bg-slate-900 text-white outline-none border-none block rounded-3xl w-full"
                 />
               </div>
               <div>
@@ -116,7 +116,7 @@ const UpdateProduct = ({ fruit }: { fruit: ProductItem }) => {
                   value={product.price}
                   required
                   type="number"
-                  className="p-2 bg-slate-500 outline-none border-none block w-full rounded-lg"
+                  className="p-4 bg-slate-900 text-white outline-none border-none block rounded-3xl w-full"
                 />
               </div>
               <div>
@@ -126,7 +126,7 @@ const UpdateProduct = ({ fruit }: { fruit: ProductItem }) => {
                   onChange={handleChange}
                   value={product.details}
                   required
-                  className="p-2 min-h-[100px] bg-slate-500 outline-none border-none block w-full rounded-lg"
+                  className="p-4 bg-slate-900 text-white outline-none border-none block rounded-3xl w-full"
                 />
               </div>
               <div>
@@ -141,15 +141,15 @@ const UpdateProduct = ({ fruit }: { fruit: ProductItem }) => {
             {isSubmit ? (
               <Spinner size={"2xl"} height={50} width={1} color="blue" />
             ) : (
-              <button type="submit" className="text-orange-600 bg-black mt-3 p-2 rounded-xl font-bold text-md">
+              <button type="submit" className="text-white bg-green-600 mt-3 p-2 rounded-xl font-bold text-md">
                 Update Now
               </button>
             )}
             </form>
           </ModalBody>
 
-          <ModalFooter>
-            <button onClick={onClose}>Close</button>
+          <ModalFooter className={'bg-slate-900'}>
+            <button className="text-white p-1 rounded-xl bg-slate-400 " onClick={onClose}>Close</button>
           </ModalFooter>
         </ModalContent>
       </Modal>
