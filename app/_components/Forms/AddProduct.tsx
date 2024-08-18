@@ -10,7 +10,7 @@ interface ProductItem {
   name: string;
   price: string;
   image: string;
-  details:string;
+  details: string;
 }
 
 interface TheImage {
@@ -38,17 +38,15 @@ function AddProduct() {
     }));
   };
 
-
   const addFunction = async (data: ProductItem) => {
-
     setIsSubmit(true);
 
-    const { name,price,details } = data;
+    const { name, price, details } = data;
     const formData = new FormData();
     formData.append("name", name);
     formData.append("price", price);
     formData.append("details", details);
-    if(image.image != null){
+    if (image.image != null) {
       formData.append("image", image?.image);
     }
 
@@ -56,9 +54,9 @@ function AddProduct() {
     let res = await addProducts("products", formData);
     setIsSubmit(false);
     console.log(res);
-    if(res.status == 201){
-        msg({ title: res.msg, status: "success", duration: 3000 });
-      }else{
+    if (res.status == 201) {
+      msg({ title: res.msg, status: "success", duration: 3000 });
+    } else {
       msg({ title: res.msg, status: "error", duration: 3000 });
     }
   };
@@ -103,11 +101,11 @@ function AddProduct() {
       <div>
         <label htmlFor="image">Image</label>
         <input
-            ref={avatarImg}
-            onChange={handleFile}
-            type="file"
-            className="p-4 bg-slate-900 text-white outline-none border-none block rounded-3xl w-full"
-          />
+          ref={avatarImg}
+          onChange={handleFile}
+          type="file"
+          className="p-4 bg-slate-900 text-white outline-none border-none block rounded-3xl w-full"
+        />
       </div>
 
       {isSubmit ? (
