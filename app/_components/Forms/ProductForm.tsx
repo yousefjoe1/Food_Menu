@@ -62,15 +62,15 @@ const ProductForm = () => {
   };
   return (
     <div className="font-[sans-serif] relative">
-      <div className="h-[240px] font-[sans-serif]">
+      {/* <div className="h-[240px] font-[sans-serif]">
         <img
           src="https://readymadeui.com/cardImg.webp"
           alt="Banner Image"
           className="w-full h-full object-cover"
         />
-      </div>
+      </div> */}
 
-      <div onSubmit={handleSubmit(addFunction)} className="relative -mt-40 m-4">
+      <div onSubmit={handleSubmit(addFunction)} className="relative m-4">
         <form className={`bg-white max-w-xl mx-auto w-full shadow-[0_2px_10px_-3px_rgba(6,81,237,0.3)] p-8 rounded-2xl transition-all ease-linear duration-200 overflow-hidden ${isSubmit ? 'h-[20px]' : 'h-[600px]'} `}>
         {
           isSubmit && <Spinner size={"2xl"} height={50} width={1} color="blue" />
