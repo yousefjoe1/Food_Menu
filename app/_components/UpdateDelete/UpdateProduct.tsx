@@ -76,6 +76,8 @@ const UpdateProduct = ({ fruit }: { fruit: ProductItem }) => {
 
     setIsSubmit(true);
     let res = await updateProduct(`products/${fruit._id}`, formData);
+    console.log(res);
+    
     setIsSubmit(false);
     if (res.code == 201) {
       msg({ title: res.msg, status: "success", duration: 3000 });

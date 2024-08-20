@@ -28,7 +28,7 @@ export async function updateProduct(api:String,data:FormData) {
     return {code: response.data.code,msg: response.data.msg}; // Return the fetched data
 
   } catch (err:any) {
-    console.error('Error fetching data:', err.response?.status);
-    return {status: err.response?.status,data: null,msg:`Error fetching data - ${err.response?.status}`}
+    console.error('Error updateProduct data:', err.response?.status);
+    return {status: err.response?.status,data: null,msg:`Error fetching data - ${err.response?.status}`,code: err.response}
   }
 }
