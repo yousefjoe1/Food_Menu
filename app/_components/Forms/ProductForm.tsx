@@ -55,7 +55,7 @@ const ProductForm = () => {
     setIsSubmit(false);
     if (res.code == 201) {
       msg({ title: res.msg, status: "success", duration: 3000 });
-      reset()
+      // reset()
     } else {
       msg({ title: res.msg, status: "error", duration: 3000 });
     }

@@ -27,7 +27,7 @@ function AddProduct() {
   });
 
   const form = useForm<ProductItem>();
-  const { register, handleSubmit, formState } = form;
+  const { register, handleSubmit, formState,reset } = form;
   const { errors } = formState;
 
   const handleFile = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -53,9 +53,10 @@ function AddProduct() {
     setIsSubmit(true);
     let res = await addProducts("products", formData);
     setIsSubmit(false);
-    console.log(res);
+    // console.log(res);
     if (res.status == 201) {
       msg({ title: res.msg, status: "success", duration: 3000 });
+reset()
     } else {
       msg({ title: res.msg, status: "error", duration: 3000 });
     }
