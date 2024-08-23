@@ -58,28 +58,30 @@ const ProductForm = () => {
     }
 
     setIsSubmit(true);
-    // let res = await addProducts("products", formData);
+    let res = await addProducts("products", formData);
     // console.log(res,'res');
-    let token = localStorage.getItem('tk')
+    // let token = localStorage.getItem('tk')
+    // console.log(token,'token');
+    
 
-    try {
-      let rs = await axios.post(`${url}products`,formData,{
-        headers: {
-          Authorization: `Bearer ${token}`
-        }
-      })
-      console.log(rs.data,'data get ok');
-      msg({ title: rs.data.msg, status: "success", duration: 3000 });
-    } catch (error) {
-      console.log(error);
-    }
+    // try {
+    //   let rs = await axios.post(`${url}products`,formData,{
+    //     headers: {
+    //       Authorization: `Bearer ${token}`
+    //     }
+    //   })
+    //   console.log(rs.data,'data get ok');
+    //   msg({ title: rs.data.msg, status: "success", duration: 3000 });
+    // } catch (error) {
+    //   console.log(error);
+    // }
     
     setIsSubmit(false);
-    // if (res.code == 201) {
-    //   msg({ title: res.msg, status: "success", duration: 3000 });
-    // } else {
-    //   msg({ title: res.msg, status: "error", duration: 3000 });
-    // }
+    if (res.code == 201) {
+      msg({ title: res.msg, status: "success", duration: 3000 });
+    } else {
+      msg({ title: res.msg, status: "error", duration: 3000 });
+    }
   };
   return (
     <div className="font-[sans-serif] relative">
