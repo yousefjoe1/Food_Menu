@@ -39,7 +39,7 @@ const FavoriteFruits = async ({ admin }: { admin: boolean }) => {
                     className="w-full object-cover h-full"
                     width={256}
                     height={214}
-                    alt={`${validImg(fruit.image)} image`}
+                    alt={`${fruit.image} image`}
                   />
                 </div>
 

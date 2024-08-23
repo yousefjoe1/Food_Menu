@@ -5,6 +5,10 @@ import { Spinner, useToast } from "@chakra-ui/react";
 
 import { useForm } from "react-hook-form";
 import { addProducts } from "@/app/actions/addProducts";
+import axios from "axios";
+import { cookies } from "next/headers";
+
+let url = process.env.NEXT_PUBLIC_DB
 
 interface ProductItem {
   name: string;
@@ -48,18 +52,35 @@ function AddProduct() {
     formData.append("details", details);
     if (image.image != null) {
       formData.append("image", image?.image);
+    }else {
+      formData.append("image", '');
+    }
+    let token = cookies().get('admin-tk-fruit')?.value
+
+    try {
+      let rs = await axios.post(`${url}products`,formData,{
+        headers: {
+          Authorization: `Bearer ${token}`
+        }
+      })
+      console.log(rs.data,'data get ok');
+      
+    } catch (error) {
+      console.log(error);
+      
     }
 
-    setIsSubmit(true);
-    let res = await addProducts("products", formData);
+    
+
     setIsSubmit(false);
-    // console.log(res);
-    if (res.status == 201) {
-      msg({ title: res.msg, status: "success", duration: 3000 });
-reset()
-    } else {
-      msg({ title: res.msg, status: "error", duration: 3000 });
-    }
+    // let res = await addProducts("products", formData);
+    // setIsSubmit(false);
+    // // console.log(res);
+    // if (res.status == 201) {
+    //   msg({ title: res.msg, status: "success", duration: 3000 });
+    // } else {
+    //   msg({ title: res.msg, status: "error", duration: 3000 });
+    // }
   };
 
   return (

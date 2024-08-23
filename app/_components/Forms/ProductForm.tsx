@@ -5,6 +5,8 @@ import { useForm } from "react-hook-form";
 import { Spinner, useToast } from "@chakra-ui/react";
 
 import { addProducts } from "@/app/actions/addProducts";
+// import { cookies } from "next/headers";
+import axios from "axios";
 
 interface FormValues {
   name: string;
@@ -12,6 +14,9 @@ interface FormValues {
   image: string;
   details: string;
 }
+
+let url = process.env.NEXT_PUBLIC_DB
+
 
 interface TheImage {
   image?: File | null;
@@ -48,18 +53,33 @@ const ProductForm = () => {
     formData.append("details", details);
     if (image.image != null) {
       formData.append("image", image?.image);
+    }else {
+      formData.append("image", '');
     }
 
     setIsSubmit(true);
-    let res = await addProducts("products", formData);
-    console.log(res,'res');
+    // let res = await addProducts("products", formData);
+    // console.log(res,'res');
+    let token = localStorage.getItem('tk')
+
+    try {
+      let rs = await axios.post(`${url}products`,formData,{
+        headers: {
+          Authorization: `Bearer ${token}`
+        }
+      })
+      console.log(rs.data,'data get ok');
+      msg({ title: rs.data.msg, status: "success", duration: 3000 });
+    } catch (error) {
+      console.log(error);
+    }
     
     setIsSubmit(false);
-    if (res.code == 201) {
-      msg({ title: res.msg, status: "success", duration: 3000 });
-    } else {
-      msg({ title: res.msg, status: "error", duration: 3000 });
-    }
+    // if (res.code == 201) {
+    //   msg({ title: res.msg, status: "success", duration: 3000 });
+    // } else {
+    //   msg({ title: res.msg, status: "error", duration: 3000 });
+    // }
   };
   return (
     <div className="font-[sans-serif] relative">
