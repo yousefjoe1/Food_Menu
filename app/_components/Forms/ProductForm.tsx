@@ -52,10 +52,11 @@ const ProductForm = () => {
 
     setIsSubmit(true);
     let res = await addProducts("products", formData);
+    console.log(res,'res');
+    
     setIsSubmit(false);
     if (res.code == 201) {
       msg({ title: res.msg, status: "success", duration: 3000 });
-      // reset()
     } else {
       msg({ title: res.msg, status: "error", duration: 3000 });
     }

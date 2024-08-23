@@ -26,7 +26,7 @@ export async function addProducts(api:String,data:FormData) {
     return {data: response.data,code: response.data.code,msg: response.data.msg}; // Return the fetched data
 
   } catch (err:any) {
-    console.error('Error adding product:', err.response);
-    return {status: err.response?.status,code:err.response.code,data: null,msg:`Error adding product - ${err.response?.status} ${err.response.data} `}
+    console.log('Error adding product:', err.response);
+    return {status: err.response?.status,code:err.response.code,data: null,msg:`Error adding product - ${err.response?.status} ${err.response.data}`,msg2:err.msg2}
   }
 }
