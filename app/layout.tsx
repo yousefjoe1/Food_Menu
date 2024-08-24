@@ -3,6 +3,7 @@ import { Inter } from "next/font/google";
 import "./globals.css";
 import NavBar from "./_components/Cards/NavBar";
 import NextTopLoader from "nextjs-toploader";
+import Footer from "./_components/Cards/Footer";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -32,8 +33,9 @@ export default function RootLayout({
           shadow="0 0 10px #2299DD,0 0 5px #2299DD"
           zIndex={1600}
           showAtBottom={false} />
-        
-        {children}</body>
+        {children}
+        <Footer />
+        </body>
     </html>
   );
 }

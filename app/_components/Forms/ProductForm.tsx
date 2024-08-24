@@ -2,16 +2,25 @@
 import React, { useRef, useState } from "react";
 import { useForm } from "react-hook-form";
 
-import { Spinner, useToast } from "@chakra-ui/react";
+import {
+  Button,
+  Menu,
+  MenuButton,
+  MenuItem,
+  MenuList,
+  Select,
+  Spinner,
+  useToast,
+} from "@chakra-ui/react";
 
 import { addProducts } from "@/app/actions/addProducts";
 // import { cookies } from "next/headers";
 import axios from "axios";
 
 import { ProductPost } from "@/app/constants/data";
+import { IoChevronDownCircleOutline } from "react-icons/io5";
 
-let url = process.env.NEXT_PUBLIC_DB
-
+let url = process.env.NEXT_PUBLIC_DB;
 
 interface TheImage {
   image?: File | null;
@@ -20,16 +29,17 @@ const ProductForm = () => {
   const msg = useToast();
   const form = useForm<ProductPost>();
 
-  const { register,handleSubmit, formState ,reset} = form;
+  const { register, handleSubmit, formState, reset } = form;
 
   const [isSubmit, setIsSubmit] = useState(false);
 
-
   const addFunction = async (data: ProductPost) => {
+    // console.log(data);
     setIsSubmit(true);
+    // return
 
     let res = await addProducts("products", data);
-    
+
     setIsSubmit(false);
     if (res.code == 201) {
       msg({ title: res.msg, status: "success", duration: 3000 });
@@ -47,11 +57,18 @@ const ProductForm = () => {
         />
       </div> */}
 
-      <div onSubmit={handleSubmit(addFunction)} className="relative m-4 bg-white">
-        <form className={`bg-white max-w-xl mx-auto w-full shadow-[0_2px_10px_-3px_rgba(6,81,237,0.3)] p-8 rounded-2xl transition-all ease-linear duration-200 overflow-hidden ${isSubmit ? 'h-[20px]' : 'h-[600px]'} `}>
-        {
-          isSubmit && <Spinner size={"2xl"} height={50} width={1} color="blue" />
-        }
+      <div
+        onSubmit={handleSubmit(addFunction)}
+        className="relative p-3 m-4 bg-slate-500 rounded-3xl"
+      >
+        <form
+          className={`bg-white max-w-xl mx-auto w-full shadow-[0_2px_10px_-3px_rgba(6,81,237,0.3)] p-8 rounded-2xl transition-all ease-linear duration-200 overflow-hidden ${
+            isSubmit ? "h-[50px]" : "h-[700px]"
+          } `}
+        >
+          {isSubmit && (
+            <Spinner size={"2xl"} height={50} width={1} color="blue" />
+          )}
           <div className="mb-12">
             <h3 className="text-gray-800 text-3xl font-bold text-center">
               Add Product
@@ -59,12 +76,10 @@ const ProductForm = () => {
           </div>
 
           <div>
-            <label className="text-gray-800 block">
-              Product Name
-            </label>
+            <label className="text-gray-800 block">Product Name</label>
             <div className="relative flex items-center">
               <input
-            {...register("name", { required: "name required" })}
+                {...register("name", { required: "name required" })}
                 name="name"
                 type="text"
                 required
@@ -78,8 +93,7 @@ const ProductForm = () => {
             <label className="text-gray-800 block">Details</label>
             <div className="relative flex items-center">
               <input
-            {...register("details", { required: "details required" })}
-
+                {...register("details", { required: "details required" })}
                 name="details"
                 type="text"
                 required
@@ -93,7 +107,7 @@ const ProductForm = () => {
             <label className="text-gray-800 block">Price</label>
             <div className="relative flex items-center">
               <input
-            {...register("price", { required: "price required" })}
+                {...register("price", { required: "price required" })}
                 name="price"
                 type="text"
                 required
@@ -105,14 +119,22 @@ const ProductForm = () => {
           <div>
             <label htmlFor="image">Image</label>
             <input
-            {...register("image")}
+              {...register("image")}
               type="text"
+              placeholder="Enter Image Link"
               className="w-full bg-transparent text-sm text-gray-800 border-b border-gray-300 focus:border-blue-500 px-2 py-3 outline-none"
             />
           </div>
+          <Select
+                {...register("type", { required: "price required" })}
+
+           placeholder="Select Type" name="type" mt={8}>
+            <option value="general">General</option>
+            <option value="favoite">Favorite</option>
+          </Select>
           <div className="mt-8 flex-1">
             {isSubmit ? (
-              ''
+              ""
             ) : (
               <button
                 type="submit"

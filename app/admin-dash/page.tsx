@@ -17,7 +17,7 @@ const page = async () => {
 
       </ChakraWrapper>
       <br />
-      <FavoriteFruits admin={true} />
+      <FavoriteFruits admin={true} query='' />
       <br />
     </div>
   );

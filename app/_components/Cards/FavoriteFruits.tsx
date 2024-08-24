@@ -9,8 +9,8 @@ import { ChakraWrapper } from "./HOC/ChakraWrapper";
 import UpdateProduct from "../UpdateDelete/UpdateProduct";
 import CardBtns from "../Btns/CardBtns";
 
-const FavoriteFruits = async ({ admin }: { admin: boolean }) => {
-  const data = await getData(`products`);
+const FavoriteFruits = async ({ admin,query }: { admin: boolean,query: string }) => {
+  const data = await getData(`products${query}`);
 // console.log(data,'products - FavoriteFruits');
 
   return (

@@ -5,5 +5,6 @@ export interface ProductItem {
     in_cart?:boolean;
     image: string;
     details: string;
+    type: string;
 }
 

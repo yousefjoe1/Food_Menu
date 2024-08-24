@@ -1,14 +1,15 @@
 import React from 'react'
-import { FaTwitter,FaLinkedinIn,FaFacebookF } from "react-icons/fa";
+import { FaTwitter,FaFacebookF } from "react-icons/fa";
 
 import Link from "next/link";
-import Image from "next/image";
+import { ImInstagram } from 'react-icons/im';
+
 const Hero = () => {
   return (
     <section style={{background: `url(/Pineapple.png) no-repeat`,backgroundPosition: 'center',backgroundAttachment: 'fixed'}} className="hero-section lg:h-screen md:h-screen h-[500px] relative overflow-hidden">
       <div className="lg:h-[210px] md:h-36 absolute z-20 lg:-right-3 right-0 top-4 rounded-l-3xl bg-yellow-300 flex lg:flex-col justify-between lg:pl-3 px-4 py-3 lg:w-14 w-32 ">
         <Link className="lg:text-2xl" href={`/`}>
-        <FaLinkedinIn className="text-slate-400" />
+        <ImInstagram className="text-slate-400" />
         </Link>
         <Link className="lg:text-2xl" href={`/`}>
             <FaFacebookF className="text-slate-400" />

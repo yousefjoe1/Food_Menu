@@ -25,7 +25,7 @@ export default function Home() {
         <div className="my-6 bg-[#171719] text-[#171719] h-[2px] " />
 
         {/* Fruit cards */}
-        <FavoriteFruits admin={false} />
+        <FavoriteFruits admin={false} query="?q=favorite" />
 
         {/* about slider */}
       </section>

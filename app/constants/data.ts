@@ -3,6 +3,7 @@ export interface ProductPost {
     price: string;
     image: string;
     details: string;
+    type: string;
   }
 
 export interface UpdateItem {
@@ -11,4 +12,5 @@ export interface UpdateItem {
     price: string;
     image: string;
     details: string;
+    type: string;
 }
