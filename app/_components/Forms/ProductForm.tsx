@@ -59,7 +59,7 @@ const ProductForm = () => {
           </div>
 
           <div>
-            <label className="text-gray-800 text-xs block mb-2">
+            <label className="text-gray-800 block">
               Product Name
             </label>
             <div className="relative flex items-center">
@@ -75,7 +75,7 @@ const ProductForm = () => {
           </div>
 
           <div className="mt-8">
-            <label className="text-gray-800 text-xs block mb-2">Details</label>
+            <label className="text-gray-800 block">Details</label>
             <div className="relative flex items-center">
               <input
             {...register("details", { required: "details required" })}
@@ -89,8 +89,8 @@ const ProductForm = () => {
             </div>
           </div>
 
-          <div className="mt-8">
-            <label className="text-gray-800 text-xs block mb-2">Price</label>
+          <div className="my-8">
+            <label className="text-gray-800 block">Price</label>
             <div className="relative flex items-center">
               <input
             {...register("price", { required: "price required" })}

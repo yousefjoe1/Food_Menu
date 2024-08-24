@@ -41,7 +41,7 @@ const page = async () => {
                 <div className="flex gap-2">
                   <div className="img-wrapper w-[200px] flex flex-col">
                     <Image
-                      src={`${`${process.env.NEXT_PUBLIC_DB}uploads/${item.product.image}`}`}
+                      src={`${item.product.image}`}
                       className="w-full h-full"
                       height={200}
                       width={200}

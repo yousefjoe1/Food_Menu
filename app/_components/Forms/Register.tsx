@@ -52,9 +52,6 @@ const Register: FC = () => {
     formData.append("username", username);
     formData.append("password", password);
     formData.append("email", email);
-    if(avatar.avatar != null){
-      formData.append("avatar", avatar?.avatar);
-    }
 
     // if (avatarImg.current?.files?.length != 0) {
     //   const fileType: string | null | File | undefined =
