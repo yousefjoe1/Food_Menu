@@ -3,9 +3,11 @@ import axios from 'axios'; // Import axios
 import { revalidatePath } from 'next/cache';
 import { cookies } from 'next/headers';
 
+import { ProductPost } from '../constants/data';
+
 let url = process.env.NEXT_PUBLIC_DB
 
-export async function addProducts(api:String,data:FormData) {
+export async function addProducts(api:String,data:ProductPost) {
   let token = cookies().get('admin-tk-fruit')?.value
 
   if(!token){

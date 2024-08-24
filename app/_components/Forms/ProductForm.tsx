@@ -8,12 +8,7 @@ import { addProducts } from "@/app/actions/addProducts";
 // import { cookies } from "next/headers";
 import axios from "axios";
 
-interface FormValues {
-  name: string;
-  price: string;
-  image: string;
-  details: string;
-}
+import { ProductPost } from "@/app/constants/data";
 
 let url = process.env.NEXT_PUBLIC_DB
 
@@ -23,58 +18,17 @@ interface TheImage {
 }
 const ProductForm = () => {
   const msg = useToast();
-  const form = useForm<FormValues>();
+  const form = useForm<ProductPost>();
 
   const { register,handleSubmit, formState ,reset} = form;
 
   const [isSubmit, setIsSubmit] = useState(false);
 
-  const avatarImg = useRef<HTMLInputElement | null>(null);
-  const [image, setImage] = useState<TheImage>({
-    image: null,
-  });
-  const handleFile = (event: React.ChangeEvent<HTMLInputElement>) => {
-    const file = event.target.files?.[0];
-    setImage((prevProduct) => ({
-      ...prevProduct,
-      image: file || null,
-    }));
-  };
 
-  const addFunction = async (data: FormValues) => {
+  const addFunction = async (data: ProductPost) => {
     setIsSubmit(true);
 
-    const { name, price, details } = data;
-    // console.log(data,'data product');
-    // return
-    const formData = new FormData();
-    formData.append("name", name);
-    formData.append("price", price);
-    formData.append("details", details);
-    if (image.image != null) {
-      formData.append("image", image?.image);
-    }else {
-      formData.append("image", '');
-    }
-
-    setIsSubmit(true);
-    let res = await addProducts("products", formData);
-    // console.log(res,'res');
-    // let token = localStorage.getItem('tk')
-    // console.log(token,'token');
-    
-
-    // try {
-    //   let rs = await axios.post(`${url}products`,formData,{
-    //     headers: {
-    //       Authorization: `Bearer ${token}`
-    //     }
-    //   })
-    //   console.log(rs.data,'data get ok');
-    //   msg({ title: rs.data.msg, status: "success", duration: 3000 });
-    // } catch (error) {
-    //   console.log(error);
-    // }
+    let res = await addProducts("products", data);
     
     setIsSubmit(false);
     if (res.code == 201) {
@@ -93,7 +47,7 @@ const ProductForm = () => {
         />
       </div> */}
 
-      <div onSubmit={handleSubmit(addFunction)} className="relative m-4">
+      <div onSubmit={handleSubmit(addFunction)} className="relative m-4 bg-white">
         <form className={`bg-white max-w-xl mx-auto w-full shadow-[0_2px_10px_-3px_rgba(6,81,237,0.3)] p-8 rounded-2xl transition-all ease-linear duration-200 overflow-hidden ${isSubmit ? 'h-[20px]' : 'h-[600px]'} `}>
         {
           isSubmit && <Spinner size={"2xl"} height={50} width={1} color="blue" />
@@ -151,9 +105,8 @@ const ProductForm = () => {
           <div>
             <label htmlFor="image">Image</label>
             <input
-              ref={avatarImg}
-              onChange={handleFile}
-              type="file"
+            {...register("image")}
+              type="text"
               className="w-full bg-transparent text-sm text-gray-800 border-b border-gray-300 focus:border-blue-500 px-2 py-3 outline-none"
             />
           </div>

@@ -13,7 +13,7 @@ interface ProductItem {
 
 let url = process.env.NEXT_PUBLIC_DB
 
-export async function updateProduct(api:String,data:FormData) {
+export async function updateProduct(api:String,data:ProductItem) {
   let token = cookies().get('admin-tk-fruit')?.value
   
   try {

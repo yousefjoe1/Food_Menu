@@ -1,5 +1,5 @@
 "use client";
-import React, { FormEvent, useRef, useState } from "react";
+import React, { FormEvent, useState } from "react";
 
 import {
   Modal,
@@ -13,44 +13,19 @@ import {
   Spinner,
 } from "@chakra-ui/react";
 
-// import { ProductItem } from "@/app/Interfaces/Interface";
 import { updateProduct } from "@/app/actions/updateProduct";
 
-interface ProductItem {
-  _id:string;
-  name: string;
-  price: string ;
-  image: string | File;
-  details: string;
-}
+import { UpdateItem } from "@/app/constants/data";
 
-interface TheImage {
-  image?: File | null;
-}
 
-const UpdateProduct = ({ fruit }: { fruit: ProductItem }) => {
-  const productImgRef = useRef<HTMLInputElement | null>(null);
-  const [image, setImage] = useState<TheImage>({
-    image: null,
-  });
-  const handleFile = (event: React.ChangeEvent<HTMLInputElement>) => {
-    const file = event.target.files?.[0];
-    setImage((prevProduct) => ({
-      ...prevProduct,
-      image: file || null,
-    }));
-  };
+const UpdateProduct = ({ fruit }: { fruit: UpdateItem }) => {
   const [product, setProduct] = useState({ ...fruit });
 
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
   ) => {
-    const { name, value } = e.target; // Destructure event target properties
-
-    setProduct((prevState) => ({
-      ...prevState,
-      [name]: value, // Handle image input differently
-    }));
+    const { name, value } = e.target; 
+    setProduct((p) => ({...p,[name]: value}));
   };
 
   const msg = useToast();
@@ -61,22 +36,9 @@ const UpdateProduct = ({ fruit }: { fruit: ProductItem }) => {
 
   const updateProductFunc = async (e:FormEvent) => {
     e.preventDefault()
-    const { name, price,_id, details} = product;
-    const productimg = product.image
-    const formData = new FormData();
-    formData.append("name", name);
-    formData.append("price", price);
-    formData.append("details", details);
-    formData.append("_id", _id);
-    if (image.image != null) {
-      formData.append("image", image?.image);
-    }else{
-      // formData.append("image", productimg);
-    } 
 
     setIsSubmit(true);
-    let res = await updateProduct(`products/${fruit._id}`, formData);
-    console.log(res);
+    let res = await updateProduct(`products/${fruit._id}`, product);
     
     setIsSubmit(false);
     if (res.code == 201) {
@@ -134,9 +96,8 @@ const UpdateProduct = ({ fruit }: { fruit: ProductItem }) => {
               <div>
                 <label htmlFor="image">Image</label>
                 <input
-                  ref={productImgRef}
-                  onChange={handleFile}
-                  type="file"
+                  type="text"
+                  name="image"
                   className="p-4 bg-slate-900 text-white outline-none border-none block rounded-3xl w-full"
                 />
               </div>

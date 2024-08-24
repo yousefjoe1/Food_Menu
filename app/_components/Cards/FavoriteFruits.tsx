@@ -13,17 +13,6 @@ const FavoriteFruits = async ({ admin }: { admin: boolean }) => {
   const data = await getData(`products`);
 // console.log(data,'products - FavoriteFruits');
 
-
-  const validImg = (str:string)=> {
-    let strType =str.slice(-3)
-    
-    if(strType != 'jpg' ){
-      return 'https://t3.ftcdn.net/jpg/00/74/73/92/360_F_74739200_WG1Fdy15mIVeQapC6LqiaoLqNLPFVqzr.jpg';
-    }else {
-      return str;
-    }
-  }
-
   return (
     <div className="flex gap-4 flex-wrap">
       <Suspense fallback={".... Loading ...."}>
@@ -34,8 +23,7 @@ const FavoriteFruits = async ({ admin }: { admin: boolean }) => {
                 <div className="card-img w-full h-[214px]">
 
                   <Image
-                    // src={`${validImg(`${process.env.NEXT_PUBLIC_DB}uploads/${fruit.image}`)}`}
-                    src={`${`${process.env.NEXT_PUBLIC_DB}uploads/${fruit.image}`}`}
+                    src={`${`${fruit.image}`}`}
                     className="w-full object-cover h-full"
                     width={256}
                     height={214}
