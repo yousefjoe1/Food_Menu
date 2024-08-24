@@ -37,6 +37,9 @@ const UpdateProduct = ({ fruit }: { fruit: UpdateItem }) => {
   const updateProductFunc = async (e:FormEvent) => {
     e.preventDefault()
 
+    console.log(product);
+    
+// return
     setIsSubmit(true);
     let res = await updateProduct(`products/${fruit._id}`, product);
     
@@ -96,6 +99,7 @@ const UpdateProduct = ({ fruit }: { fruit: UpdateItem }) => {
               <div>
                 <label htmlFor="image">Image</label>
                 <input
+                  onChange={handleChange}
                   type="text"
                   name="image"
                   className="p-4 bg-slate-900 text-white outline-none border-none block rounded-3xl w-full"
