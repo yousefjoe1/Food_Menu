@@ -135,7 +135,7 @@ const Register: FC = () => {
           <p className="text-red-500">{errors.password?.message}</p>
         </div>
 
-        <div>
+        {/* <div>
           <label className="text-white" htmlFor="avatar">
             Avatar
           </label>
@@ -145,7 +145,7 @@ const Register: FC = () => {
             type="file"
             className="p-4 bg-slate-900 text-white outline-none border-none block rounded-3xl w-full "
           />
-        </div>
+        </div> */}
 
         <div className="submit-btn mt-3">
           {isSubmit ? (
