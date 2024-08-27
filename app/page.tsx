@@ -32,7 +32,7 @@ export default function Home() {
 
         <h3 className="flex items-center justify-between text-white mb-4">
           <span className="text-2xl">Fruit Shope</span>
-          <Link href={'/all-fruits'} className="flex items-center gap-2">
+          <Link href={'/all-fruits?l=2'} className="flex items-center gap-2">
             <span>More</span>
             <IoArrowForward />
           </Link>

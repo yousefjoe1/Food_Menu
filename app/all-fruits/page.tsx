@@ -11,11 +11,9 @@ import Increase from "../_components/Cards/Increase";
 import DeleteProduct from "../_components/UpdateDelete/DeleteProduct";
 import UpdateProduct from "../_components/UpdateDelete/UpdateProduct";
 import CardBtns from "../_components/Btns/CardBtns";
-
-const AllFruits = async ({ searchParams }: { searchParams: { l: string } }) => {
+const page = async ({ searchParams }: { searchParams: { l: string } }) => {
   let l = searchParams.l;
-  const data = await getData(`products?q=favorite&limit=${l}`);
-// console.log(data);
+  const data = await getData(`products?q=general&limit=${l}`);
 
   return (
     <div className="p-5">
@@ -91,10 +89,10 @@ const AllFruits = async ({ searchParams }: { searchParams: { l: string } }) => {
         </Suspense>
       </div>
       <ChakraWrapper>
-        <Increase productsLength={data.data.length} n={l} url="all-favorite"/>
+        <Increase n={l} url="all-fruits" productsLength={data.data.length} />
       </ChakraWrapper>
     </div>
   );
 };
 
-export default AllFruits;
+export default page;

@@ -2,16 +2,25 @@
 import React, { ChangeEvent, useState } from "react";
 import { useSearchParams } from "next/navigation";
 import { useRouter } from "next/navigation";
-import { Button, Select } from "@chakra-ui/react";
+import { Button, Select, useToast } from "@chakra-ui/react";
 import { MdAddchart } from "react-icons/md";
 
-const Increase = ({ n }: { n: string }) => {
+const Increase = ({ n,url,productsLength }: { n: string,url: string,productsLength:number }) => {
   const router = useRouter();
+  const msg = useToast();
+
 
   const handleIncreaseLimit = () => {
+    let currentNumber = parseInt(n)
+    if(currentNumber > productsLength){
+      msg({ title: `No More`, status: "info", duration: 3000 });
+ 
+      return
+    }
+
     let nN = parseInt(n) + 1;
     // let v = e.target.value;
-    router.push(`/all-favorite?l=${nN}`);
+    router.replace(`/${url}?l=${nN}`);
   };
 
   return (
