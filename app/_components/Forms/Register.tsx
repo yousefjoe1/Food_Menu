@@ -14,11 +14,7 @@ interface FormValues {
   username: string;
   email: string;
   password: string;
-  avatar?: File | null;
-}
-
-interface TheAvatar {
-  avatar?: File | null;
+  // avatar?: File | null;
 }
 
 const Register: FC = () => {
@@ -26,51 +22,18 @@ const Register: FC = () => {
 
   const { register, handleSubmit, formState } = form;
   const { errors } = formState;
-  const avatarImg = useRef<HTMLInputElement | null>(null);
 
   const msg = useToast();
 
   const [isSubmit, setIsSubmit] = useState(false);
 
-  const [avatar, setAvatar] = useState<TheAvatar>({
-    avatar: null,
-  });
-
-  const handleFile = (event: React.ChangeEvent<HTMLInputElement>) => {
-    const file = event.target.files?.[0];
-    setAvatar((prevProduct) => ({
-      ...prevProduct,
-      avatar: file || null,
-    }));
-  };
-
   const redirect = useRouter();
 
   const loginFunc = async (data: FormValues) => {
-    const { username, email, password } = data;
-    const formData = new FormData();
-    formData.append("username", username);
-    formData.append("password", password);
-    formData.append("email", email);
-
-    // if (avatarImg.current?.files?.length != 0) {
-    //   const fileType: string | null | File | undefined =
-    //     avatarImg?.current?.files?.[0]?.type.split("/")[1];
-    //   const types = ["jpg", "jpeg", "png"].includes(fileType);
-    //   if (!types) {
-    //     msg({ title: "wrong file type", status: "success", duration: 3000 });
-    //     return;
-    //   } else {
-    //     let avatar: string | null | File | undefined =
-    //       avatarImg?.current?.files?.[0];
-    //     formData.append("avatar", avatar);
-    //   }
-    // }
-
     setIsSubmit(true);
 
     try {
-      let res = await addUser("users/register", formData);
+      let res = await addUser("users/register", data);
       console.log(res);
       
       // setIsSubmit(false);

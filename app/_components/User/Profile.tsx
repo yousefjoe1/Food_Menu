@@ -12,7 +12,6 @@ import {
 } from "@chakra-ui/react";
 import { ChakraWrapper } from "../Cards/HOC/ChakraWrapper";
 import { getUserDetails } from "@/app/actions/getUserDetails";
-import Image from "next/image";
 
 import { FaUserCog } from "react-icons/fa";
 import { FaUserSecret } from "react-icons/fa6";
@@ -27,12 +26,9 @@ const Profile = () => {
   const { isOpen, onOpen, onClose } = useDisclosure();
   const [details, setDetails] = useState<User | null>(null);
 
-  console.log(details);
-
   const showDetails = async () => {
     onOpen();
     let resp = await getUserDetails();
-    console.log(resp);
 
     if (resp.data == false) {
       setDetails((p) => null);
@@ -56,21 +52,7 @@ const Profile = () => {
             <ModalBody>
               {details != null ? (
                 <>
-                  {details.avatar == "" ? (
-                    <FaUserSecret size={40} />
-                  ) : (
-                    <>
-                      <h3 className="lg:text-2xl p-3 w-[80px] h-[80px] overflow-hidden rounded-xl">
-                        <Image
-                          src={`${process.env.NEXT_PUBLIC_DB}uploads/${details.avatar}`}
-                          className="rounded-xl w-full h-full object-cover"
-                          alt="avatar"
-                          width={80}
-                          height={80}
-                        />
-                      </h3>
-                    </>
-                  )}
+                  <FaUserSecret size={40} />
                   <h3 className="lg:text-3xl p-3">{details.username}</h3>
                   <h3 className="lg:text-2xl p-3">{details.email}</h3>
                 </>
