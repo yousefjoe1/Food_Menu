@@ -42,7 +42,7 @@ const page = async () => {
                   <div className="img-wrapper w-[200px] flex flex-col">
                     <Image
                       src={`${item.product.image}`}
-                      className="w-full h-full"
+                      className="w-full h-[150px] object-cover"
                       height={200}
                       width={200}
                       alt={`${item.product.name} image`}

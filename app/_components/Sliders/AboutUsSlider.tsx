@@ -18,10 +18,10 @@ export default function AboutUsSlider() {
   return (
     <section className="bg-[#090A10] text-white pb-4">
       <div className="about-header ">
-        <h2 className="pt-6 px-24 text-3xl">About Us</h2>
+        <h2 className="pt-6 lg:px-24 px-6 text-3xl">About Us</h2>
       </div>
 
-      <div className="px-24 mt-14">
+      <div className="lg:px-24 px-6 mt-14">
         <Swiper
         //   slidesPerView={3}
           spaceBetween={30}

@@ -13,7 +13,7 @@ export default function Home() {
       <Hero />
 
       {/* Favorite Fruits section */}
-      <section className="favorite-fruits p-24">
+      <section className="favorite-fruits lg:p-24 p-10">
         <h3 className="flex items-center justify-between text-white mb-4">
           <span className="text-2xl">Favorite Fruits</span>
           <Link href={'/all-favorite?l=2'} className="flex items-center gap-2">
