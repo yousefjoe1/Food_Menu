@@ -91,7 +91,7 @@ const AllFruits = async ({ searchParams }: { searchParams: { l: string } }) => {
         </Suspense>
       </div>
       <ChakraWrapper>
-        <Increase productsLength={data.data.length} n={l} url="all-favorite"/>
+        <Increase productsLength={data.productLength} dLength={data.data.length}  n={l} url="all-favorite"/>
       </ChakraWrapper>
     </div>
   );

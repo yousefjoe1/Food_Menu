@@ -89,7 +89,7 @@ const page = async ({ searchParams }: { searchParams: { l: string } }) => {
         </Suspense>
       </div>
       <ChakraWrapper>
-        <Increase n={l} url="all-fruits" productsLength={data.data.length} />
+        <Increase n={l} url="all-fruits"  productsLength={data.productLength} dLength={data.data.length}  />
       </ChakraWrapper>
     </div>
   );

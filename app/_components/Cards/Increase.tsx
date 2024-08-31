@@ -22,10 +22,12 @@ const Increase = ({
   n,
   url,
   productsLength,
+  dLength
 }: {
   n: string;
   url: string;
   productsLength: number;
+  dLength: number
 }) => {
   const router = useRouter();
   const msg = useToast();
@@ -34,23 +36,22 @@ const Increase = ({
 
   const handleIncreaseLimit = () => {
     let currentNumber = parseInt(n);
-    setSpinn((p) => true);
-    if (currentNumber > productsLength) {
+    if (currentNumber >= productsLength) {
       msg({ title: `No More`, status: "info", duration: 3000 });
       return;
-    }
+    }else {
+      setSpinn((p) => true);  
+      let nN = parseInt(n) + 1;
+      router.replace(`/${url}?l=${nN}`);
 
-    
-    let nN = parseInt(n) + 1;
-    // let v = e.target.value;
-    router.replace(`/${url}?l=${nN}`);
+    }
   };
 
   useEffect(() => {
     setSpinn((p) => false);
     // if (spinn == false) {
     // }
-  }, [productsLength]);
+  }, [dLength]);
 
 
   return (
