@@ -5,7 +5,7 @@ import { ImInstagram } from "react-icons/im";
 
 const Footer = () => {
   return (
-    <footer className="h-[300px] ">
+    <footer className="min-h-[300px] ">
       <div className="flex justify-between flex-wrap items-center gap-5 lg:px-24 px-6">
         <h3 className="text-white text-2xl">
           Subscribe <br />

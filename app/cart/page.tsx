@@ -6,6 +6,7 @@ import { ChakraWrapper } from "../_components/Cards/HOC/ChakraWrapper";
 import DeleteCart from "../_components/UpdateDelete/DeleteCart";
 import { RiDeleteBin5Fill } from "react-icons/ri";
 import UpdateCount from "../_components/UpdateDelete/UpdateCount";
+import { Spinner } from "@chakra-ui/react";
 
 interface Product {
   name: string;
@@ -22,12 +23,25 @@ interface Item {
   image: string;
 }
 
+export const Sp = ()=> {
+
+  return (
+    <Spinner
+  thickness='4px'
+  speed='0.65s'
+  emptyColor='gray.200'
+  color='blue.500'
+  size='xl'
+/>
+  )
+}
+
 const page = async () => {
   const cart = await getCart("cart");
 
   return (
     <section className="bg-slate-500 p-3 min-h-svh ">
-      <Suspense fallback={".... Loading ...."}>
+      <Suspense fallback={<ChakraWrapper> <Sp /> </ChakraWrapper>}>
         {cart.status == "success" ? (
           <>
             <h3 className="text-3xl rounded-xl bg-slate-900 text-yellow-50 p-2">
