@@ -53,6 +53,7 @@ const Increase = ({
     // }
   }, [dLength]);
 
+console.log('hello joe');
 
   return (
     <div className="flex justify-center my-10">
