@@ -23,7 +23,7 @@ interface Item {
   image: string;
 }
 
-export const Sp = ()=> {
+const Sp = ()=> {
 
   return (
     <Spinner
