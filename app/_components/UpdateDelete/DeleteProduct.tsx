@@ -15,7 +15,7 @@ import {
 
 import { deleteProduct } from "@/app/actions/deleteProducts";
 
-const DeleteProduct = ({ id }: { id: string }) => {
+const DeleteProduct = ({ id,isRefetch,refetchFn }: { id: string,isRefetch:boolean,refetchFn:Function }) => {
     
   const msg = useToast();
 
@@ -30,6 +30,9 @@ const DeleteProduct = ({ id }: { id: string }) => {
     
     setIsSubmit(false);
     if (res.code == 201) {
+      if(isRefetch){
+        refetchFn()
+      }
       msg({ title: res.msg, status: "success", duration: 3000 });
     } else {
       msg({ title: res.msg, status: "error", duration: 3000 });

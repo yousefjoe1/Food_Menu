@@ -42,8 +42,8 @@ const FavoriteFruits = async ({ admin,query }: { admin: boolean,query: string })
                     </h3>
                     <ChakraWrapper>
                       <div className="flex justify-between mt-5">
-                        <DeleteProduct id={fruit._id} />
-                        <UpdateProduct fruit={fruit} />
+                      <DeleteProduct id={fruit._id} isRefetch={true} refetchFn={ ()=> {} } />
+                      <UpdateProduct fruit={fruit}  isRefetch={true} refetchFn={()=> {} }/>
                       </div>
                     </ChakraWrapper>
                   </div>

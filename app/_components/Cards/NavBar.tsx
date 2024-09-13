@@ -1,12 +1,12 @@
 import React from "react";
 import Cart from "../Cart/Cart";
 import Auth from "../Auth/Auth";
-import NavLinks from "../NavLinks/NavLinks";
 import Link from "next/link";
 
 import Profile from "../User/Profile";
 
 const NavBar = () => {
+  
 
   return (
     <nav className="flex gap-y-5 text-white items-center justify-between flex-wrap lg:px-24 px-4 py-5 navbg shadow-md shadow-slate-800">

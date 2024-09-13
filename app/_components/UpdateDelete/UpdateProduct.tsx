@@ -18,7 +18,7 @@ import { updateProduct } from "@/app/actions/updateProduct";
 
 import { UpdateItem } from "@/app/constants/data";
 
-const UpdateProduct = ({ fruit }: { fruit: UpdateItem }) => {
+const UpdateProduct = ({ fruit,isRefetch,refetchFn }: { fruit: UpdateItem,isRefetch:boolean,refetchFn:Function }) => {
   const [product, setProduct] = useState({ ...fruit });
 
   const handleChange = (
@@ -45,6 +45,9 @@ const UpdateProduct = ({ fruit }: { fruit: UpdateItem }) => {
 
     setIsSubmit(false);
     if (res.code == 201) {
+      if(isRefetch){
+        refetchFn()
+      }
       msg({ title: res.msg, status: "success", duration: 3000 });
     } else {
       msg({ title: res.msg, status: "error", duration: 3000 });
